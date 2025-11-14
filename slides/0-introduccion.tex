@@ -1,0 +1,311 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{booktabs}
+
+% Configuración del tema
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% Comandos personalizados
+\newcommand{\alert}[1]{\textcolor{red}{#1}}
+\newcommand{\highlight}[1]{\textcolor{blue}{#1}}
+
+% Variables del documento (serán reemplazadas por Jinja2)
+\title{Introducción a la Probabilidad y Estadística}
+\subtitle{¡Descubriendo el mundo de los números y las posibilidades!}
+\author{Probabilidad y Estadística}
+\date{\today}
+
+\begin{document}
+
+% Página de título
+\begin{frame}
+\titlepage
+\end{frame}
+
+% Diapositivas generadas dinámicamente
+\begin{frame}{¿Qué vamos a aprender?}
+\begin{alertblock}{Nota}
+¡Bienvenidos a una aventura numérica! 🎲📊
+\end{alertblock}
+\begin{itemize}
+\item Dos mundos fascinantes:
+\end{itemize}
+\begin{itemize}
+\item 📊 Estadística: entender lo que ya pasó
+\end{itemize}
+\begin{itemize}
+\item 🎲 Probabilidad: predecir lo que puede pasar
+\end{itemize}
+\begin{block}{Ejemplo}
+Como un detective que analiza pistas (estadística) y adivina quién es el culpable (probabilidad)
+\end{block}
+\end{frame}
+
+\begin{frame}{¿Qué es la Estadística?}
+\begin{itemize}
+\item Es el arte de recolectar, organizar y analizar datos
+\end{itemize}
+\begin{itemize}
+\item Nos ayuda a entender el pasado y el presente
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Es como ser un detective de números! 🔍
+\end{alertblock}
+\begin{block}{Ejemplo}
+Contar cuántos estudiantes prefieren pizza vs hamburguesa
+\end{block}
+\end{frame}
+
+\begin{frame}{La Estadística en tu Vida Diaria}
+\begin{itemize}
+\item 📱 Redes sociales: conteo de likes y seguidores
+\end{itemize}
+\begin{itemize}
+\item ⚽ Deportes: estadísticas de goles y victorias
+\end{itemize}
+\begin{itemize}
+\item 🎮 Videojuegos: puntuaciones y rankings
+\end{itemize}
+\begin{itemize}
+\item 📺 Netflix: series más vistas
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Estás rodeado de estadísticas sin darte cuenta!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Ejemplo Divertido de Estadística}
+\begin{exampleblock}{Problema}
+Preguntamos a 10 amigos su sabor de helado favorito
+\end{exampleblock}
+\begin{center}
+\begin{tabular}{|c|c|)}
+\toprule
+Sabor & Votos \\
+\midrule
+Chocolate & 4 \\
+Vainilla & 3 \\
+Fresa & 2 \\
+Limón & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{align*}
+Conclusión: ¡El chocolate es el campeón! 🍫
+\end{align*}
+\end{frame}
+
+\begin{frame}{¿Qué es la Probabilidad?}
+\begin{itemize}
+\item Es calcular qué tan posible es que algo ocurra
+\end{itemize}
+\begin{itemize}
+\item Trabaja con eventos FUTUROS o inciertos
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Es como predecir el futuro con matemáticas! 🔮
+\end{alertblock}
+\begin{block}{Ejemplo}
+¿Qué probabilidad hay de que llueva mañana?
+\end{block}
+\end{frame}
+
+\begin{frame}{La Probabilidad en tu Vida}
+\begin{itemize}
+\item 🎲 Juegos de mesa: lanzar dados
+\end{itemize}
+\begin{itemize}
+\item 🃏 Cartas: ¿me saldrá un as?
+\end{itemize}
+\begin{itemize}
+\item ⚽ Deportes: ¿ganará mi equipo?
+\end{itemize}
+\begin{itemize}
+\item 🌦️ Clima: pronóstico del tiempo
+\end{itemize}
+\begin{itemize}
+\item 🎰 Sorteos y rifas
+\end{itemize}
+\begin{alertblock}{Nota}
+¡La probabilidad está en cada decisión!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Ejemplo Divertido de Probabilidad}
+\begin{exampleblock}{Problema}
+Tienes una bolsa con 10 caramelos: 6 rojos y 4 azules
+\end{exampleblock}
+\begin{itemize}
+\item Sin mirar, sacas uno. ¿Qué color es más probable?
+\end{itemize}
+\begin{align*}
+Rojo: 6 de cada 10 (60%)
+\end{align*}
+\begin{align*}
+Azul: 4 de cada 10 (40%)
+\end{align*}
+\begin{itemize}
+\item ¡Es más probable sacar uno rojo! 🔴
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Diferencias Clave}
+\begin{center}
+\begin{tabular}{|c|c|)}
+\toprule
+Estadística & Probabilidad \\
+\midrule
+Analiza datos del PASADO & Predice el FUTURO \\
+¿Qué pasó? & ¿Qué puede pasar? \\
+Certeza & Incertidumbre \\
+Temperaturas del mes & Pronóstico del tiempo \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{alertblock}{Nota}
+¡Son dos caras de la misma moneda! 🪙
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{¿Por qué son Importantes?}
+\begin{itemize}
+\item 🏥 Medicina: estudios de efectividad de tratamientos
+\end{itemize}
+\begin{itemize}
+\item 💼 Negocios: decidir qué productos vender
+\end{itemize}
+\begin{itemize}
+\item 🎓 Educación: mejorar métodos de enseñanza
+\end{itemize}
+\begin{itemize}
+\item 🌍 Ciencia: descubrir patrones en la naturaleza
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Ayudan a tomar mejores decisiones!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Vocabulario Básico}
+\begin{itemize}
+\item 📊 Datos: información que recolectamos
+\end{itemize}
+\begin{itemize}
+\item 👥 Población: todos los elementos que estudiamos
+\end{itemize}
+\begin{itemize}
+\item 🎯 Muestra: parte de la población
+\end{itemize}
+\begin{itemize}
+\item 🎲 Evento: algo que puede ocurrir
+\end{itemize}
+\begin{itemize}
+\item 🎯 Experimento: acción que produce resultados
+\end{itemize}
+\begin{block}{Ejemplo}
+Experimento: lanzar una moneda. Evento: sale cara
+\end{block}
+\end{frame}
+
+\begin{frame}{Un Experimento Divertido}
+\begin{exampleblock}{Problema}
+Lanza una moneda 10 veces y anota los resultados
+\end{exampleblock}
+\begin{itemize}
+\item Estadística: cuenta cuántas caras y cuántas sellos
+\end{itemize}
+\begin{itemize}
+\item Probabilidad: ¿cuál es la chance teórica?
+\end{itemize}
+\begin{align*}
+Teóricamente: 50% cara, 50% sello
+\end{align*}
+\begin{alertblock}{Nota}
+¿Coincide tu experimento con la teoría?
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Escalera de la Probabilidad}
+\begin{itemize}
+\item Imposible (0%): que salga un 7 en un dado normal 🎲
+\end{itemize}
+\begin{itemize}
+\item Poco probable (25%): sacar una carta de corazones ♥️
+\end{itemize}
+\begin{itemize}
+\item Igual de probable (50%): que salga cara 🪙
+\end{itemize}
+\begin{itemize}
+\item Muy probable (75%): NO sacar un 6 en un dado
+\end{itemize}
+\begin{itemize}
+\item Seguro (100%): que el sol salga mañana ☀️
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Todo evento tiene su lugar en la escalera!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Actividad Práctica}
+\begin{exampleblock}{Problema}
+Piensa en estas situaciones y clasifícalas:
+\end{exampleblock}
+\begin{itemize}
+\item 1. ¿Es estadística o probabilidad?
+\end{itemize}
+\begin{itemize}
+\item 2. Calificaciones del año pasado
+\end{itemize}
+\begin{itemize}
+\item 3. Probabilidad de ganar un juego
+\end{itemize}
+\begin{itemize}
+\item 4. Número de goles en el mundial anterior
+\end{itemize}
+\begin{itemize}
+\item 5. Chance de que nieve en tu ciudad
+\end{itemize}
+\end{frame}
+
+\begin{frame}{¿Listo para la Aventura?}
+\begin{itemize}
+\item ✅ Ya sabes qué es la estadística
+\end{itemize}
+\begin{itemize}
+\item ✅ Ya sabes qué es la probabilidad
+\end{itemize}
+\begin{itemize}
+\item ✅ Viste ejemplos de la vida real
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Ahora estás listo para profundizar en cada tema!
+\end{alertblock}
+\begin{itemize}
+\item En las próximas clases aprenderemos:
+\end{itemize}
+\begin{itemize}
+\item 📊 Tablas y gráficos
+\end{itemize}
+\begin{itemize}
+\item 📏 Medidas estadísticas
+\end{itemize}
+\begin{itemize}
+\item 🎲 Cálculos de probabilidad
+\end{itemize}
+\end{frame}
+
+
+% Diapositiva final
+\begin{frame}
+\begin{center}
+\Huge ¿Preguntas?
+\end{center}
+\end{frame}
+
+\end{document}

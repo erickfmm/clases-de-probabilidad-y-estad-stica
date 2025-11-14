@@ -1,0 +1,149 @@
+tema: "Introducción a la Probabilidad y Estadística"
+subtitulo: "¡Descubriendo el mundo de los números y las posibilidades!"
+
+diapositivas:
+  - titulo: "¿Qué vamos a aprender?"
+    contenido:
+      - tipo: "nota"
+        texto: "¡Bienvenidos a una aventura numérica! 🎲📊"
+      - "Dos mundos fascinantes:"
+      - "📊 Estadística: entender lo que ya pasó"
+      - "🎲 Probabilidad: predecir lo que puede pasar"
+      - tipo: "ejemplo"
+        texto: "Como un detective que analiza pistas (estadística) y adivina quién es el culpable (probabilidad)"
+
+  - titulo: "¿Qué es la Estadística?"
+    contenido:
+      - "Es el arte de recolectar, organizar y analizar datos"
+      - "Nos ayuda a entender el pasado y el presente"
+      - tipo: "nota"
+        texto: "¡Es como ser un detective de números! 🔍"
+      - tipo: "ejemplo"
+        texto: "Contar cuántos estudiantes prefieren pizza vs hamburguesa"
+
+  - titulo: "La Estadística en tu Vida Diaria"
+    contenido:
+      - "📱 Redes sociales: conteo de likes y seguidores"
+      - "⚽ Deportes: estadísticas de goles y victorias"
+      - "🎮 Videojuegos: puntuaciones y rankings"
+      - "📺 Netflix: series más vistas"
+      - tipo: "nota"
+        texto: "¡Estás rodeado de estadísticas sin darte cuenta!"
+
+  - titulo: "Ejemplo Divertido de Estadística"
+    contenido:
+      - tipo: "problema"
+        texto: "Preguntamos a 10 amigos su sabor de helado favorito"
+      - tipo: "tabla"
+        encabezados: ["Sabor", "Votos"]
+        filas:
+          - ["Chocolate", "4"]
+          - ["Vainilla", "3"]
+          - ["Fresa", "2"]
+          - ["Limón", "1"]
+      - tipo: "calculo"
+        texto: "Conclusión: ¡El chocolate es el campeón! 🍫"
+
+  - titulo: "¿Qué es la Probabilidad?"
+    contenido:
+      - "Es calcular qué tan posible es que algo ocurra"
+      - "Trabaja con eventos FUTUROS o inciertos"
+      - tipo: "nota"
+        texto: "¡Es como predecir el futuro con matemáticas! 🔮"
+      - tipo: "ejemplo"
+        texto: "¿Qué probabilidad hay de que llueva mañana?"
+
+  - titulo: "La Probabilidad en tu Vida"
+    contenido:
+      - "🎲 Juegos de mesa: lanzar dados"
+      - "🃏 Cartas: ¿me saldrá un as?"
+      - "⚽ Deportes: ¿ganará mi equipo?"
+      - "🌦️ Clima: pronóstico del tiempo"
+      - "🎰 Sorteos y rifas"
+      - tipo: "nota"
+        texto: "¡La probabilidad está en cada decisión!"
+
+  - titulo: "Ejemplo Divertido de Probabilidad"
+    contenido:
+      - tipo: "problema"
+        texto: "Tienes una bolsa con 10 caramelos: 6 rojos y 4 azules"
+      - "Sin mirar, sacas uno. ¿Qué color es más probable?"
+      - tipo: "calculo"
+        texto: "Rojo: 6 de cada 10 (60%)"
+      - tipo: "calculo"
+        texto: "Azul: 4 de cada 10 (40%)"
+      - "¡Es más probable sacar uno rojo! 🔴"
+
+  - titulo: "Diferencias Clave"
+    contenido:
+      - tipo: "tabla"
+        encabezados: ["Estadística", "Probabilidad"]
+        filas:
+          - ["Analiza datos del PASADO", "Predice el FUTURO"]
+          - ["¿Qué pasó?", "¿Qué puede pasar?"]
+          - ["Certeza", "Incertidumbre"]
+          - ["Temperaturas del mes", "Pronóstico del tiempo"]
+      - tipo: "nota"
+        texto: "¡Son dos caras de la misma moneda! 🪙"
+
+  - titulo: "¿Por qué son Importantes?"
+    contenido:
+      - "🏥 Medicina: estudios de efectividad de tratamientos"
+      - "💼 Negocios: decidir qué productos vender"
+      - "🎓 Educación: mejorar métodos de enseñanza"
+      - "🌍 Ciencia: descubrir patrones en la naturaleza"
+      - tipo: "nota"
+        texto: "¡Ayudan a tomar mejores decisiones!"
+
+  - titulo: "Vocabulario Básico"
+    contenido:
+      - "📊 Datos: información que recolectamos"
+      - "👥 Población: todos los elementos que estudiamos"
+      - "🎯 Muestra: parte de la población"
+      - "🎲 Evento: algo que puede ocurrir"
+      - "🎯 Experimento: acción que produce resultados"
+      - tipo: "ejemplo"
+        texto: "Experimento: lanzar una moneda. Evento: sale cara"
+
+  - titulo: "Un Experimento Divertido"
+    contenido:
+      - tipo: "problema"
+        texto: "Lanza una moneda 10 veces y anota los resultados"
+      - "Estadística: cuenta cuántas caras y cuántas sellos"
+      - "Probabilidad: ¿cuál es la chance teórica?"
+      - tipo: "calculo"
+        texto: "Teóricamente: 50% cara, 50% sello"
+      - tipo: "nota"
+        texto: "¿Coincide tu experimento con la teoría?"
+
+  - titulo: "Escalera de la Probabilidad"
+    contenido:
+      - "Imposible (0%): que salga un 7 en un dado normal 🎲"
+      - "Poco probable (25%): sacar una carta de corazones ♥️"
+      - "Igual de probable (50%): que salga cara 🪙"
+      - "Muy probable (75%): NO sacar un 6 en un dado"
+      - "Seguro (100%): que el sol salga mañana ☀️"
+      - tipo: "nota"
+        texto: "¡Todo evento tiene su lugar en la escalera!"
+
+  - titulo: "Actividad Práctica"
+    contenido:
+      - tipo: "problema"
+        texto: "Piensa en estas situaciones y clasifícalas:"
+      - "1. ¿Es estadística o probabilidad?"
+      - "2. Calificaciones del año pasado"
+      - "3. Probabilidad de ganar un juego"
+      - "4. Número de goles en el mundial anterior"
+      - "5. Chance de que nieve en tu ciudad"
+
+  - titulo: "¿Listo para la Aventura?"
+    contenido:
+      - "✅ Ya sabes qué es la estadística"
+      - "✅ Ya sabes qué es la probabilidad"
+      - "✅ Viste ejemplos de la vida real"
+      - tipo: "nota"
+        texto: "¡Ahora estás listo para profundizar en cada tema!"
+      - "En las próximas clases aprenderemos:"
+      - "📊 Tablas y gráficos"
+      - "📏 Medidas estadísticas"
+      - "🎲 Cálculos de probabilidad"

@@ -1,0 +1,521 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{booktabs}
+
+% Configuración del tema
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% Comandos personalizados
+\newcommand{\alert}[1]{\textcolor{red}{#1}}
+\newcommand{\highlight}[1]{\textcolor{blue}{#1}}
+
+% Variables del documento (serán reemplazadas por Jinja2)
+\title{Medidas de Posición}
+\subtitle{¡Descubriendo dónde están los datos! 📍}
+\author{Probabilidad y Estadística}
+\date{\today}
+
+\begin{document}
+
+% Página de título
+\begin{frame}
+\titlepage
+\end{frame}
+
+% Diapositivas generadas dinámicamente
+\begin{frame}{¿Qué son las Medidas de Posición?}
+\begin{alertblock}{Nota}
+¡Imagina una fila de personas ordenadas por altura! 👥
+\end{alertblock}
+\begin{itemize}
+\item Nos ayudan a ubicar datos dentro de un grupo
+\end{itemize}
+\begin{itemize}
+\item Responden preguntas como:
+\end{itemize}
+\begin{itemize}
+\item ¿Dónde está el dato del medio?
+\end{itemize}
+\begin{itemize}
+\item ¿Cuál es el valor que supera el 75% de los datos?
+\end{itemize}
+\begin{block}{Ejemplo}
+Como saber en qué puesto quedaste en una carrera 🏃
+\end{block}
+\end{frame}
+
+\begin{frame}{La Mediana - El Valor del Centro}
+\begin{itemize}
+\item Es el dato que está justo en el medio
+\end{itemize}
+\begin{itemize}
+\item 50% de datos están abajo, 50% arriba
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Es como el estudiante del medio en una fila ordenada!
+\end{alertblock}
+\begin{block}{Ejemplo}
+Alturas: 1.50, 1.60, 1.70, 1.80, 1.90 m
+\end{block}
+\begin{align*}
+Mediana = 1.70 m (el del medio)
+\end{align*}
+\end{frame}
+
+\begin{frame}{Encontrar la Mediana}
+\begin{itemize}
+\item Paso 1: Ordena los datos de menor a mayor
+\end{itemize}
+\begin{itemize}
+\item Paso 2: Si hay cantidad impar, toma el del centro
+\end{itemize}
+\begin{itemize}
+\item Paso 3: Si hay cantidad par, promedia los 2 del centro
+\end{itemize}
+\begin{block}{Ejemplo}
+Datos: 3, 7, 2, 9, 5 → Ordenar: 2, 3, 5, 7, 9
+\end{block}
+\begin{align*}
+Mediana = 5 (posición central)
+\end{align*}
+\end{frame}
+
+\begin{frame}{Mediana con Cantidad Par}
+\begin{block}{Ejemplo}
+Datos: 4, 8, 6, 2, 10, 12
+\end{block}
+\begin{itemize}
+\item Ordenar: 2, 4, 6, 8, 10, 12
+\end{itemize}
+\begin{itemize}
+\item Los dos centrales son: 6 y 8
+\end{itemize}
+\begin{align*}
+Mediana = (6 + 8) ÷ 2 = 7
+\end{align*}
+\begin{alertblock}{Nota}
+¡La mediana no siempre es un dato original!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{¿Qué son los Cuartiles?}
+\begin{itemize}
+\item Dividen los datos en 4 partes iguales
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Como cortar una pizza en 4 partes! 🍕
+\end{alertblock}
+\begin{itemize}
+\item Q1: primer cuartil (25%)
+\end{itemize}
+\begin{itemize}
+\item Q2: segundo cuartil = mediana (50%)
+\end{itemize}
+\begin{itemize}
+\item Q3: tercer cuartil (75%)
+\end{itemize}
+\begin{block}{Ejemplo}
+Separan grupos de 25%, 50%, 75% y 100%
+\end{block}
+\end{frame}
+
+\begin{frame}{Cuartiles Explicados}
+\begin{itemize}
+\item Q1: 25% de datos están por debajo
+\end{itemize}
+\begin{itemize}
+\item Q2: 50% de datos están por debajo (mediana)
+\end{itemize}
+\begin{itemize}
+\item Q3: 75% de datos están por debajo
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Son como marcas en una regla! 📏
+\end{alertblock}
+\begin{block}{Ejemplo}
+Si Q3 de salarios es 3000, significa que 75% gana menos de 3000
+\end{block}
+\end{frame}
+
+\begin{frame}{Ejemplo de Cuartiles Paso a Paso}
+\begin{exampleblock}{Problema}
+Datos: 2, 4, 6, 8, 10, 12, 14, 16, 18
+\end{exampleblock}
+\begin{itemize}
+\item Ya están ordenados (9 valores)
+\end{itemize}
+\begin{align*}
+Q2 (mediana) = 10 (valor central)
+\end{align*}
+\begin{itemize}
+\item Mitad inferior: 2, 4, 6, 8
+\end{itemize}
+\begin{align*}
+Q1 = (4+6)÷2 = 5
+\end{align*}
+\begin{itemize}
+\item Mitad superior: 12, 14, 16, 18
+\end{itemize}
+\begin{align*}
+Q3 = (14+16)÷2 = 15
+\end{align*}
+\end{frame}
+
+\begin{frame}{Interpretando los Cuartiles}
+\begin{block}{Ejemplo}
+Q1=5, Q2=10, Q3=15
+\end{block}
+\begin{itemize}
+\item Interpretación:
+\end{itemize}
+\begin{itemize}
+\item 📊 25% de datos ≤ 5
+\end{itemize}
+\begin{itemize}
+\item 📊 50% de datos ≤ 10
+\end{itemize}
+\begin{itemize}
+\item 📊 75% de datos ≤ 15
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Los cuartiles dividen los datos en grupos iguales!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{¿Qué son los Percentiles?}
+\begin{itemize}
+\item Dividen los datos en 100 partes iguales
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Como dividir una cinta métrica en 100 cm! 📐
+\end{alertblock}
+\begin{itemize}
+\item P₁, P₂, P₃, ..., P₉₉
+\end{itemize}
+\begin{itemize}
+\item Pₖ significa: k% de datos están por debajo
+\end{itemize}
+\begin{block}{Ejemplo}
+P₉₀ en una prueba: superaste al 90% de estudiantes 🎓
+\end{block}
+\end{frame}
+
+\begin{frame}{Relación entre Cuartiles y Percentiles}
+\begin{center}
+\begin{tabular}{|c|c|)}
+\toprule
+Cuartil & Percentil Equivalente \\
+\midrule
+Q1 & P₂₅ \\
+Q2 (mediana) & P₅₀ \\
+Q3 & P₇₅ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{alertblock}{Nota}
+¡Los cuartiles son percentiles especiales!
+\end{alertblock}
+\begin{itemize}
+\item P₁₀ = 10% por debajo, P₉₀ = 90% por debajo
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ejemplo de Percentiles}
+\begin{block}{Ejemplo}
+En un examen obtuviste 85 puntos
+\end{block}
+\begin{itemize}
+\item El P₉₀ es 80 puntos
+\end{itemize}
+\begin{itemize}
+\item Interpretación:
+\end{itemize}
+\begin{itemize}
+\item ✅ Superaste al 90% de estudiantes
+\end{itemize}
+\begin{itemize}
+\item ✅ Solo el 10% sacó más que tú
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Excelente resultado! Estás en el top 10% 🌟
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{El Diagrama de Cajón (Box Plot)}
+\begin{itemize}
+\item Herramienta visual para ver distribución
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Es como un resumen gráfico de 5 números! 📦
+\end{alertblock}
+\begin{itemize}
+\item Muestra de un vistazo:
+\end{itemize}
+\begin{itemize}
+\item 🔹 El mínimo
+\end{itemize}
+\begin{itemize}
+\item 🔹 Q1, Q2 (mediana), Q3
+\end{itemize}
+\begin{itemize}
+\item 🔹 El máximo
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Partes del Diagrama de Cajón}
+\begin{itemize}
+\item 🔵 Caja: va de Q1 a Q3
+\end{itemize}
+\begin{itemize}
+\item 📏 Rango intercuartílico (RIC) = Q3 - Q1
+\end{itemize}
+\begin{itemize}
+\item ━ Línea en la caja: la mediana (Q2)
+\end{itemize}
+\begin{itemize}
+\item 🔺 Bigotes: van desde la caja hasta mín y máx
+\end{itemize}
+\begin{alertblock}{Nota}
+¡La caja contiene el 50% central de los datos!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Dibujando un Box Plot}
+\begin{exampleblock}{Problema}
+Datos: 5, 7, 8, 9, 10, 12, 15, 18, 20
+\end{exampleblock}
+\begin{align*}
+Mínimo = 5, Máximo = 20
+\end{align*}
+\begin{align*}
+Q1 = 8, Q2 = 10, Q3 = 15
+\end{align*}
+\begin{itemize}
+\item Bigote izquierdo: de 5 a 8
+\end{itemize}
+\begin{itemize}
+\item Caja: de 8 a 15 (con línea en 10)
+\end{itemize}
+\begin{itemize}
+\item Bigote derecho: de 15 a 20
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Valores Atípicos (Outliers)}
+\begin{itemize}
+\item Datos muy alejados del resto
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Como alguien muy alto en una clase de niños pequeños! 🦒
+\end{alertblock}
+\begin{itemize}
+\item Se detectan con la regla:
+\end{itemize}
+\begin{center}
+\Large
+$RIC = Q3 - Q1$
+\end{center}
+\begin{itemize}
+\item Atípico si es < Q1 - 1.5×RIC
+\end{itemize}
+\begin{itemize}
+\item o si es > Q3 + 1.5×RIC
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ejemplo de Valor Atípico}
+\begin{block}{Ejemplo}
+Datos: 10, 12, 11, 13, 12, 50
+\end{block}
+\begin{align*}
+Q1=11, Q3=13, RIC=13-11=2
+\end{align*}
+\begin{align*}
+Límite superior: 13 + 1.5×2 = 16
+\end{align*}
+\begin{itemize}
+\item El valor 50 > 16
+\end{itemize}
+\begin{alertblock}{Nota}
+¡50 es un valor atípico! Se marca con un punto especial ⚫
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Aplicación Práctica - Salarios}
+\begin{exampleblock}{Problema}
+Salarios mensuales (S/.): 1200, 1500, 1800, 2000, 2200, 2500, 3000, 3500, 5000
+\end{exampleblock}
+\begin{itemize}
+\item Paso 1: Ya están ordenados ✓
+\end{itemize}
+\begin{itemize}
+\item Paso 2: Calcular cuartiles
+\end{itemize}
+\begin{itemize}
+\item Paso 3: Hacer diagrama de cajón
+\end{itemize}
+\begin{itemize}
+\item Paso 4: Identificar atípicos
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Solución - Cuartiles}
+\begin{align*}
+Mínimo = 1200, Máximo = 5000
+\end{align*}
+\begin{align*}
+Q2 (mediana) = 2200 (valor central)
+\end{align*}
+\begin{itemize}
+\item Mitad baja: 1200, 1500, 1800, 2000
+\end{itemize}
+\begin{align*}
+Q1 = (1500+1800)÷2 = 1650
+\end{align*}
+\begin{itemize}
+\item Mitad alta: 2500, 3000, 3500, 5000
+\end{itemize}
+\begin{align*}
+Q3 = (3000+3500)÷2 = 3250
+\end{align*}
+\end{frame}
+
+\begin{frame}{Solución - Valores Atípicos}
+\begin{align*}
+RIC = 3250 - 1650 = 1600
+\end{align*}
+\begin{align*}
+Límite inferior: 1650 - 1.5×1600 = -750
+\end{align*}
+\begin{align*}
+Límite superior: 3250 + 1.5×1600 = 5650
+\end{align*}
+\begin{itemize}
+\item Todos los salarios están entre -750 y 5650
+\end{itemize}
+\begin{alertblock}{Nota}
+¡No hay valores atípicos! Todos son normales
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Interpretación de Salarios}
+\begin{itemize}
+\item 📊 50% de trabajadores gana entre 1650 y 3250
+\end{itemize}
+\begin{itemize}
+\item 📊 El salario típico (mediano) es 2200
+\end{itemize}
+\begin{itemize}
+\item 📊 25% gana menos de 1650
+\end{itemize}
+\begin{itemize}
+\item 📊 25% gana más de 3250
+\end{itemize}
+\begin{alertblock}{Nota}
+¡El box plot muestra que hay variabilidad en los salarios!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Comparando con Box Plots}
+\begin{itemize}
+\item Podemos comparar dos o más grupos
+\end{itemize}
+\begin{block}{Ejemplo}
+Comparar salarios de dos empresas lado a lado
+\end{block}
+\begin{itemize}
+\item Se puede ver de un vistazo:
+\end{itemize}
+\begin{itemize}
+\item ✓ Cuál tiene salarios más altos
+\end{itemize}
+\begin{itemize}
+\item ✓ Cuál tiene más variabilidad
+\end{itemize}
+\begin{itemize}
+\item ✓ Dónde hay valores atípicos
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Es súper útil para comparaciones! 👥
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Ejercicio de Práctica}
+\begin{exampleblock}{Problema}
+Edades de un grupo: 15, 16, 15, 17, 16, 18, 15, 20, 16, 25
+\end{exampleblock}
+\begin{itemize}
+\item Tarea 1: Ordenar los datos
+\end{itemize}
+\begin{itemize}
+\item Tarea 2: Calcular Q1, Q2, Q3
+\end{itemize}
+\begin{itemize}
+\item Tarea 3: Calcular RIC
+\end{itemize}
+\begin{itemize}
+\item Tarea 4: Verificar si 25 es atípico
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Intenta resolverlo antes de ver la solución!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Solución del Ejercicio}
+\begin{itemize}
+\item Ordenado: 15, 15, 15, 16, 16, 16, 17, 18, 20, 25
+\end{itemize}
+\begin{align*}
+Q1 = 15, Q2 = 16, Q3 = 18
+\end{align*}
+\begin{align*}
+RIC = 18 - 15 = 3
+\end{align*}
+\begin{align*}
+Límite superior: 18 + 1.5×3 = 22.5
+\end{align*}
+\begin{itemize}
+\item 25 > 22.5
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Sí! 25 es un valor atípico (persona mayor en el grupo) ⚫
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{¡Resumen de la Clase!}
+\begin{itemize}
+\item ✅ Mediana: valor del centro (50%)
+\end{itemize}
+\begin{itemize}
+\item ✅ Cuartiles: dividen en 4 partes (Q1, Q2, Q3)
+\end{itemize}
+\begin{itemize}
+\item ✅ Percentiles: dividen en 100 partes
+\end{itemize}
+\begin{itemize}
+\item ✅ Box Plot: visualiza la distribución
+\end{itemize}
+\begin{itemize}
+\item ✅ Valores atípicos: datos muy alejados
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Ahora puedes analizar dónde se ubican los datos! 🎯
+\end{alertblock}
+\end{frame}
+
+
+% Diapositiva final
+\begin{frame}
+\begin{center}
+\Huge ¿Preguntas?
+\end{center}
+\end{frame}
+
+\end{document}

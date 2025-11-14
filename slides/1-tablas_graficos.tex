@@ -1,0 +1,430 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{booktabs}
+
+% Configuración del tema
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% Comandos personalizados
+\newcommand{\alert}[1]{\textcolor{red}{#1}}
+\newcommand{\highlight}[1]{\textcolor{blue}{#1}}
+
+% Variables del documento (serán reemplazadas por Jinja2)
+\title{Representación de datos a través de tablas y gráficos}
+\subtitle{¡Organicemos los datos de forma divertida! 📊}
+\author{Probabilidad y Estadística}
+\date{\today}
+
+\begin{document}
+
+% Página de título
+\begin{frame}
+\titlepage
+\end{frame}
+
+% Diapositivas generadas dinámicamente
+\begin{frame}{¿Por qué organizar datos?}
+\begin{alertblock}{Nota}
+¡Imagina tu cuarto desordenado vs ordenado! 🏠
+\end{alertblock}
+\begin{itemize}
+\item Datos desordenados = confusión 😵
+\end{itemize}
+\begin{itemize}
+\item Datos organizados = claridad y respuestas ✨
+\end{itemize}
+\begin{block}{Ejemplo}
+¿Qué helado prefieren tus amigos? Con una tabla lo sabrás al instante
+\end{block}
+\end{frame}
+
+\begin{frame}{¿Qué son los datos?}
+\begin{itemize}
+\item Son información que recolectamos
+\end{itemize}
+\begin{itemize}
+\item Pueden ser números: edades, pesos, calificaciones
+\end{itemize}
+\begin{itemize}
+\item O categorías: colores, sabores, deportes
+\end{itemize}
+\begin{block}{Ejemplo}
+Datos de tu clase: alturas de todos los estudiantes
+\end{block}
+\begin{alertblock}{Nota}
+¡Los datos cuentan historias, solo hay que saber leerlos! 📖
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Tablas de Frecuencia - ¿Qué son?}
+\begin{itemize}
+\item Es como hacer un conteo organizado 📝
+\end{itemize}
+\begin{itemize}
+\item Agrupamos datos iguales y contamos
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Es como ordenar tu colección de cartas por tipo!
+\end{alertblock}
+\begin{block}{Ejemplo}
+Si tienes muchas manzanas rojas y pocas verdes, la tabla lo muestra claramente
+\end{block}
+\end{frame}
+
+\begin{frame}{Frecuencia Absoluta}
+\begin{itemize}
+\item Es simplemente: ¿cuántas veces aparece?
+\end{itemize}
+\begin{itemize}
+\item Es el conteo directo, el número total
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Es como contar con los dedos! ✋
+\end{alertblock}
+\begin{block}{Ejemplo}
+Colores de autos en el estacionamiento:
+\end{block}
+\begin{itemize}
+\item Rojos: 5, Azules: 3, Blancos: 7
+\end{itemize}
+\begin{itemize}
+\item Las frecuencias absolutas son: 5, 3 y 7
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Frecuencia Relativa}
+\begin{itemize}
+\item Es la proporción del total
+\end{itemize}
+\begin{itemize}
+\item Responde: ¿qué parte del todo representa?
+\end{itemize}
+\begin{center}
+\Large
+$\text{Frec. Relativa} = \frac{\text{Frec. Absoluta}}{\text{Total}}$
+\end{center}
+\begin{alertblock}{Nota}
+¡Es como saber qué porción de pizza te toca! 🍕
+\end{alertblock}
+\begin{block}{Ejemplo}
+Si hay 10 autos y 5 son rojos: 5/10 = 0.5 = 50%
+\end{block}
+\end{frame}
+
+\begin{frame}{Ejemplo Paso a Paso}
+\begin{exampleblock}{Problema}
+Notas de 6 estudiantes: 15, 18, 15, 20, 18, 15
+\end{exampleblock}
+\begin{itemize}
+\item Paso 1: Identificar valores diferentes: 15, 18, 20
+\end{itemize}
+\begin{itemize}
+\item Paso 2: Contar cada uno (Frec. Absoluta)
+\end{itemize}
+\begin{itemize}
+\item Paso 3: Calcular proporción (Frec. Relativa)
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Vamos a construir la tabla juntos!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Tabla Completa del Ejemplo}
+\begin{center}
+\begin{tabular}{|c|c|c|)}
+\toprule
+Nota & Frec. Abs. & Frec. Rel. \\
+\midrule
+15 & 3 & 3/6 = 0.50 \\
+18 & 2 & 2/6 = 0.33 \\
+20 & 1 & 1/6 = 0.17 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item Total de estudiantes: 6
+\end{itemize}
+\begin{align*}
+¡La nota 15 es la más frecuente! Aparece en la mitad de casos
+\end{align*}
+\begin{alertblock}{Nota}
+Nota: todas las frec. relativas suman 1.00 (o 100%)
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Gráfico de Barras 📊}
+\begin{itemize}
+\item Barras verticales u horizontales
+\end{itemize}
+\begin{itemize}
+\item Cada barra = una categoría
+\end{itemize}
+\begin{itemize}
+\item Altura de barra = frecuencia
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Perfecto para comparar categorías de un vistazo!
+\end{alertblock}
+\begin{block}{Ejemplo}
+Deportes favoritos: Fútbol (10), Básquet (7), Vóley (5)
+\end{block}
+\begin{itemize}
+\item ¡Las barras muestran claramente cuál es más popular! ⚽
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Histograma 📈}
+\begin{itemize}
+\item Similar a barras, pero para datos numéricos continuos
+\end{itemize}
+\begin{itemize}
+\item Agrupa datos en rangos o intervalos
+\end{itemize}
+\begin{itemize}
+\item Las barras están pegadas (sin espacios)
+\end{itemize}
+\begin{block}{Ejemplo}
+Edades: 10-15, 15-20, 20-25 años
+\end{block}
+\begin{alertblock}{Nota}
+¡Muestra cómo se distribuyen los datos!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Gráfico Circular (Pastel) 🥧}
+\begin{itemize}
+\item Un círculo dividido en porciones
+\end{itemize}
+\begin{itemize}
+\item Cada porción = una categoría
+\end{itemize}
+\begin{itemize}
+\item Tamaño de porción = frecuencia relativa
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Ideal para ver proporciones del 100%!
+\end{alertblock}
+\begin{block}{Ejemplo}
+Presupuesto familiar: 50% comida, 30% vivienda, 20% otros
+\end{block}
+\end{frame}
+
+\begin{frame}{Gráfico de Líneas 📉}
+\begin{itemize}
+\item Puntos conectados con líneas
+\end{itemize}
+\begin{itemize}
+\item Perfecto para mostrar cambios en el tiempo
+\end{itemize}
+\begin{block}{Ejemplo}
+Temperatura de la semana, ventas mensuales
+\end{block}
+\begin{alertblock}{Nota}
+¡Puedes ver tendencias: ¿sube? ¿baja? ¿se mantiene?
+\end{alertblock}
+\begin{itemize}
+\item Las líneas te cuentan la historia del cambio 📖
+\end{itemize}
+\end{frame}
+
+\begin{frame}{¿Cuál gráfico usar?}
+\begin{center}
+\begin{tabular}{|c|c|)}
+\toprule
+Tipo de datos & Gráfico ideal \\
+\midrule
+Categorías & Barras o Circular \\
+Números continuos & Histograma \\
+Cambios en tiempo & Líneas \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{alertblock}{Nota}
+¡Elige según lo que quieras mostrar! 🎯
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{El Promedio - ¿Qué es?}
+\begin{itemize}
+\item También llamado 'media aritmética'
+\end{itemize}
+\begin{itemize}
+\item Es el valor central, el punto de balance ⚖️
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Imagina repartir todo en partes iguales!
+\end{alertblock}
+\begin{block}{Ejemplo}
+Si 3 amigos tienen 3, 6 y 9 caramelos, el promedio es repartir equitativamente
+\end{block}
+\end{frame}
+
+\begin{frame}{¿Cómo calcular el Promedio?}
+\begin{itemize}
+\item Paso 1: Suma todos los valores
+\end{itemize}
+\begin{itemize}
+\item Paso 2: Divide entre cuántos valores hay
+\end{itemize}
+\begin{center}
+\Large
+$\bar{x} = \frac{\text{suma de todos}}{\text{cantidad de datos}}$
+\end{center}
+\begin{alertblock}{Nota}
+¡Es como compartir todo y ver cuánto le toca a cada uno! 🍰
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Ejemplo del Promedio}
+\begin{block}{Ejemplo}
+Datos: 5, 8, 10, 12, 15
+\end{block}
+\begin{itemize}
+\item Paso 1: Sumar todos
+\end{itemize}
+\begin{align*}
+5 + 8 + 10 + 12 + 15 = 50
+\end{align*}
+\begin{itemize}
+\item Paso 2: Dividir entre cantidad (5 datos)
+\end{itemize}
+\begin{align*}
+\bar{x} = \frac{50}{5} = 10
+\end{align*}
+\begin{alertblock}{Nota}
+¡El promedio es 10! Es el valor 'típico' del grupo
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Practicando con Frutas 🍎}
+\begin{exampleblock}{Problema}
+Manzanas vendidas por día: 12, 15, 10, 18, 20
+\end{exampleblock}
+\begin{itemize}
+\item ¿Cuántas manzanas se venden en promedio por día?
+\end{itemize}
+\begin{align*}
+Suma: 12 + 15 + 10 + 18 + 20 = 75
+\end{align*}
+\begin{align*}
+Promedio: 75 ÷ 5 = 15 manzanas/día
+\end{align*}
+\begin{itemize}
+\item ¡En promedio se venden 15 manzanas diarias! 🎯
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ejercicio Divertido 🌡️}
+\begin{exampleblock}{Problema}
+Temperaturas de la semana (°C): 22, 24, 21, 23, 25, 20, 22
+\end{exampleblock}
+\begin{itemize}
+\item Tarea 1: Construir tabla de frecuencias
+\end{itemize}
+\begin{itemize}
+\item Tarea 2: Calcular temperatura promedio
+\end{itemize}
+\begin{itemize}
+\item Tarea 3: ¿Qué gráfico usarías?
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Piensa qué historia quieres contar con los datos!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Solución - Tabla}
+\begin{center}
+\begin{tabular}{|c|c|)}
+\toprule
+Temperatura & Días (Frec. Abs.) \\
+\midrule
+20°C & 1 \\
+21°C & 1 \\
+22°C & 2 \\
+23°C & 1 \\
+24°C & 1 \\
+25°C & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{alertblock}{Nota}
+22°C es la más frecuente (aparece 2 veces)
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Solución - Promedio}
+\begin{align*}
+Suma: 22+24+21+23+25+20+22 = 157
+\end{align*}
+\begin{align*}
+Promedio: 157 ÷ 7 = 22.43°C
+\end{align*}
+\begin{itemize}
+\item Interpretación:
+\end{itemize}
+\begin{itemize}
+\item La temperatura típica de la semana fue 22.4°C
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Es una semana cálida y estable! ☀️
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Solución - Gráfico}
+\begin{itemize}
+\item Mejor opción: Gráfico de líneas 📈
+\end{itemize}
+\begin{itemize}
+\item ¿Por qué?
+\end{itemize}
+\begin{itemize}
+\item ✓ Muestra cambios día a día
+\end{itemize}
+\begin{itemize}
+\item ✓ Podemos ver si subió o bajó
+\end{itemize}
+\begin{itemize}
+\item ✓ Identifica tendencias
+\end{itemize}
+\begin{alertblock}{Nota}
+También podríamos usar barras para comparar cada día
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{¡Resumen de la clase!}
+\begin{itemize}
+\item ✅ Tablas: organizan datos claramente
+\end{itemize}
+\begin{itemize}
+\item ✅ Frecuencia absoluta: conteo directo
+\end{itemize}
+\begin{itemize}
+\item ✅ Frecuencia relativa: proporción del total
+\end{itemize}
+\begin{itemize}
+\item ✅ Gráficos: visualizan datos
+\end{itemize}
+\begin{itemize}
+\item ✅ Promedio: valor típico del grupo
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Ahora puedes organizar y entender cualquier conjunto de datos! 🎉
+\end{alertblock}
+\end{frame}
+
+
+% Diapositiva final
+\begin{frame}
+\begin{center}
+\Huge ¿Preguntas?
+\end{center}
+\end{frame}
+
+\end{document}

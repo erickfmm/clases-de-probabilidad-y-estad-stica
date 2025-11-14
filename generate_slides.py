@@ -130,12 +130,14 @@ def main():
     directorio_base = Path(__file__).parent
     template_path = directorio_base / "template.tex"
     output_dir = directorio_base / "slides"
+    clases_dir = directorio_base / "clases" / "probabilidad y estadistica"
     
     # Archivos YAML de temas
     temas = [
-        "clases/probabilidad y estadistica/1-tablas_graficos.yml",
-        "clases/probabilidad y estadistica/2-medidas_posicion.yml",
-        "clases/probabilidad y estadistica/3-reglas_probabilidades.yml"
+        clases_dir / "0-introduccion.yml",
+        clases_dir / "1-tablas_graficos.yml",
+        clases_dir / "2-medidas_posicion.yml",
+        clases_dir / "3-reglas_probabilidades.yml"
     ]
     
     print("=" * 60)
@@ -149,9 +151,8 @@ def main():
     
     # Procesar cada tema
     for tema in temas:
-        archivo_yaml = directorio_base / tema
-        if archivo_yaml.exists():
-            procesar_tema(archivo_yaml, template_path, output_dir, compilar=True)
+        if tema.exists():
+            procesar_tema(tema, template_path, output_dir, compilar=True)
         else:
             print(f"⚠ Advertencia: No se encontró {tema}")
     

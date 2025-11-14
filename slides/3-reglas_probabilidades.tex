@@ -1,0 +1,562 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{booktabs}
+
+% Configuración del tema
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% Comandos personalizados
+\newcommand{\alert}[1]{\textcolor{red}{#1}}
+\newcommand{\highlight}[1]{\textcolor{blue}{#1}}
+
+% Variables del documento (serán reemplazadas por Jinja2)
+\title{Reglas de las Probabilidades}
+\subtitle{¡Calculando las posibilidades! 🎲}
+\author{Probabilidad y Estadística}
+\date{\today}
+
+\begin{document}
+
+% Página de título
+\begin{frame}
+\titlepage
+\end{frame}
+
+% Diapositivas generadas dinámicamente
+\begin{frame}{¿Qué es la Probabilidad?}
+\begin{itemize}
+\item Es medir qué tan posible es que algo ocurra
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Es como adivinar con matemáticas! 🔮
+\end{alertblock}
+\begin{itemize}
+\item Va de 0 (imposible) a 1 (seguro)
+\end{itemize}
+\begin{itemize}
+\item También se expresa en porcentajes (0% a 100%)
+\end{itemize}
+\begin{block}{Ejemplo}
+¿Qué probabilidad hay de que caiga cara al lanzar una moneda?
+\end{block}
+\end{frame}
+
+\begin{frame}{La Escala de Probabilidad}
+\begin{itemize}
+\item 0 o 0%: Imposible (nunca pasa)
+\end{itemize}
+\begin{itemize}
+\item 0.25 o 25%: Poco probable
+\end{itemize}
+\begin{itemize}
+\item 0.5 o 50%: Igual de probable
+\end{itemize}
+\begin{itemize}
+\item 0.75 o 75%: Muy probable
+\end{itemize}
+\begin{itemize}
+\item 1 o 100%: Seguro (siempre pasa)
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Toda probabilidad está en esta escala! 📏
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Vocabulario Importante}
+\begin{itemize}
+\item 🎯 Experimento: acción que hacemos
+\end{itemize}
+\begin{itemize}
+\item 🎲 Resultado: lo que puede salir
+\end{itemize}
+\begin{itemize}
+\item 📋 Espacio muestral: todos los resultados posibles
+\end{itemize}
+\begin{itemize}
+\item ⭐ Evento: uno o más resultados que nos interesan
+\end{itemize}
+\begin{block}{Ejemplo}
+Experimento: lanzar un dado. Espacio: {1,2,3,4,5,6}. Evento: sale par {2,4,6}
+\end{block}
+\end{frame}
+
+\begin{frame}{Fórmula Básica de Probabilidad}
+\begin{center}
+\Large
+$P(A) = \frac{\text{casos favorables}}{\text{casos totales}}$
+\end{center}
+\begin{itemize}
+\item Casos favorables: resultados que queremos
+\end{itemize}
+\begin{itemize}
+\item Casos totales: todos los resultados posibles
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Como contar tus opciones de ganar! 🎯
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Ejemplo con un Dado 🎲}
+\begin{exampleblock}{Problema}
+Lanzamos un dado. ¿Probabilidad de sacar un número par?
+\end{exampleblock}
+\begin{itemize}
+\item Resultados totales: 6 (del 1 al 6)
+\end{itemize}
+\begin{itemize}
+\item Resultados favorables: 3 (el 2, 4 y 6)
+\end{itemize}
+\begin{align*}
+P(par) = \frac{3}{6} = \frac{1}{2} = 0.5 = 50\%
+\end{align*}
+\begin{alertblock}{Nota}
+¡Hay 50% de probabilidad! ¡La mitad de las veces!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Ejemplo con Cartas 🃏}
+\begin{exampleblock}{Problema}
+Sacas una carta de una baraja española (40 cartas)
+\end{exampleblock}
+\begin{itemize}
+\item ¿Probabilidad de sacar un as?
+\end{itemize}
+\begin{itemize}
+\item Ases totales: 4 (uno de cada palo)
+\end{itemize}
+\begin{itemize}
+\item Cartas totales: 40
+\end{itemize}
+\begin{align*}
+P(As) = \frac{4}{40} = \frac{1}{10} = 0.1 = 10\%
+\end{align*}
+\begin{itemize}
+\item ¡Solo 10% de probabilidad de sacar un as!
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Regla del Complemento}
+\begin{itemize}
+\item El complemento es: lo que NO ocurre
+\end{itemize}
+\begin{center}
+\Large
+$P(\text{no A}) = 1 - P(A)$
+\end{center}
+\begin{alertblock}{Nota}
+¡Si algo tiene 30% de pasar, tiene 70% de NO pasar!
+\end{alertblock}
+\begin{block}{Ejemplo}
+Si P(lluvia) = 0.3, entonces P(no lluvia) = 1 - 0.3 = 0.7
+\end{block}
+\end{frame}
+
+\begin{frame}{Ejemplo del Complemento}
+\begin{exampleblock}{Problema}
+En un dado: P(NO sacar 6) = ?
+\end{exampleblock}
+\begin{itemize}
+\item Primero: P(sacar 6) = 1/6
+\end{itemize}
+\begin{align*}
+P(NO sacar 6) = 1 - \frac{1}{6} = \frac{5}{6}
+\end{align*}
+\begin{itemize}
+\item Tiene sentido: hay 5 números que no son 6
+\end{itemize}
+\begin{alertblock}{Nota}
+¡El complemento es muy útil cuando es más fácil calcular lo opuesto! 🔄
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Regla Aditiva - ¿A o B?}
+\begin{itemize}
+\item Para calcular: probabilidad de A O B
+\end{itemize}
+\begin{center}
+\Large
+$P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+\end{center}
+\begin{itemize}
+\item ¿Por qué restamos la intersección?
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Para no contar dos veces los casos comunes! 🔢
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Eventos Mutuamente Excluyentes}
+\begin{itemize}
+\item Son eventos que NO pueden pasar al mismo tiempo
+\end{itemize}
+\begin{block}{Ejemplo}
+En un dado: sacar 2 O sacar 5 (no pueden salir ambos)
+\end{block}
+\begin{itemize}
+\item Si son mutuamente excluyentes:
+\end{itemize}
+\begin{center}
+\Large
+$P(A \cup B) = P(A) + P(B)$
+\end{center}
+\begin{alertblock}{Nota}
+¡Solo sumamos porque no hay casos comunes! ➕
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Ejemplo de Regla Aditiva Simple}
+\begin{exampleblock}{Problema}
+En una baraja: ¿probabilidad de As O Rey?
+\end{exampleblock}
+\begin{itemize}
+\item Ases: 4, Reyes: 4, Total: 52 cartas
+\end{itemize}
+\begin{itemize}
+\item Eventos mutuamente excluyentes (no puede ser ambos)
+\end{itemize}
+\begin{align*}
+P(As) = \frac{4}{52}, \quad P(Rey) = \frac{4}{52}
+\end{align*}
+\begin{align*}
+P(As \cup Rey) = \frac{4}{52} + \frac{4}{52} = \frac{8}{52} = \frac{2}{13}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Ejemplo con Intersección}
+\begin{exampleblock}{Problema}
+En 52 cartas: ¿probabilidad de Corazón O Figura?
+\end{exampleblock}
+\begin{itemize}
+\item Corazones: 13, Figuras: 12 (J, Q, K de 4 palos)
+\end{itemize}
+\begin{itemize}
+\item ¡PERO! 3 son ambos (J♥, Q♥, K♥)
+\end{itemize}
+\begin{align*}
+P(♥) = \frac{13}{52}, \quad P(Figura) = \frac{12}{52}
+\end{align*}
+\begin{align*}
+P(♥ \cup Figura) = \frac{13}{52} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Regla Multiplicativa - ¿A y B?}
+\begin{itemize}
+\item Para calcular: probabilidad de A Y B (ambos)
+\end{itemize}
+\begin{center}
+\Large
+$P(A \cap B) = P(A) \cdot P(B|A)$
+\end{center}
+\begin{itemize}
+\item P(B|A) se lee: 'B dado que A ya ocurrió'
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Es como eventos en secuencia! 🔗
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Eventos Independientes}
+\begin{itemize}
+\item Eventos donde uno NO afecta al otro
+\end{itemize}
+\begin{block}{Ejemplo}
+Lanzar dos dados: el primero no afecta al segundo
+\end{block}
+\begin{itemize}
+\item Si son independientes:
+\end{itemize}
+\begin{center}
+\Large
+$P(A \cap B) = P(A) \cdot P(B)$
+\end{center}
+\begin{alertblock}{Nota}
+¡Solo multiplicamos! ✖️
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Ejemplo de Eventos Independientes}
+\begin{exampleblock}{Problema}
+Lanzamos dos dados. ¿Probabilidad de que ambos sean 6?
+\end{exampleblock}
+\begin{itemize}
+\item Primer dado: P(6) = 1/6
+\end{itemize}
+\begin{itemize}
+\item Segundo dado: P(6) = 1/6
+\end{itemize}
+\begin{itemize}
+\item Son independientes (uno no afecta al otro)
+\end{itemize}
+\begin{align*}
+P(6 \cap 6) = \frac{1}{6} \times \frac{1}{6} = \frac{1}{36}
+\end{align*}
+\begin{alertblock}{Nota}
+¡Muy difícil! Solo 2.78% de probabilidad 🎲🎲
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Ejemplo de Eventos Dependientes}
+\begin{exampleblock}{Problema}
+Urna con 5 rojas y 3 azules. Sacas 2 bolas SIN reposición
+\end{exampleblock}
+\begin{itemize}
+\item ¿Probabilidad de 2 rojas?
+\end{itemize}
+\begin{itemize}
+\item Primera bola roja: P(R₁) = 5/8
+\end{itemize}
+\begin{itemize}
+\item Segunda bola roja (ya sacaste una): P(R₂|R₁) = 4/7
+\end{itemize}
+\begin{align*}
+P(R₁ \cap R₂) = \frac{5}{8} \times \frac{4}{7} = \frac{20}{56} = \frac{5}{14}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Con Reposición vs Sin Reposición}
+\begin{center}
+\begin{tabular}{|c|c|)}
+\toprule
+Con reposición & Sin reposición \\
+\midrule
+Devuelves la bola & No devuelves \\
+Total no cambia & Total disminuye \\
+Eventos independientes & Eventos dependientes \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{alertblock}{Nota}
+¡La reposición es clave para determinar independencia! 🔑
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Problema de la Moneda 🪙}
+\begin{exampleblock}{Problema}
+Lanzas una moneda 3 veces. ¿Probabilidad de 3 caras?
+\end{exampleblock}
+\begin{itemize}
+\item Cada lanzamiento es independiente
+\end{itemize}
+\begin{itemize}
+\item P(cara) = 1/2 en cada lanzamiento
+\end{itemize}
+\begin{align*}
+P(CCC) = \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{8}
+\end{align*}
+\begin{alertblock}{Nota}
+¡Solo 12.5% de probabilidad! 🎯
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Problema Combinado}
+\begin{exampleblock}{Problema}
+Urna: 5 bolas rojas, 3 azules. Un sorteo:
+\end{exampleblock}
+\begin{itemize}
+\item a) ¿P(roja)?
+\end{itemize}
+\begin{itemize}
+\item b) ¿P(roja O azul)?
+\end{itemize}
+\begin{itemize}
+\item c) ¿P(2 rojas seguidas SIN reposición)?
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Vamos a resolverlo paso a paso! 🔍
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Solución Parte a y b}
+\begin{itemize}
+\item Total de bolas: 5 + 3 = 8
+\end{itemize}
+\begin{align*}
+a) \, P(R) = \frac{5}{8}
+\end{align*}
+\begin{itemize}
+\item Roja O azul = todas las bolas (mutuamente excluyentes)
+\end{itemize}
+\begin{align*}
+b) \, P(R \cup A) = \frac{5}{8} + \frac{3}{8} = \frac{8}{8} = 1
+\end{align*}
+\begin{alertblock}{Nota}
+¡Seguro sacarás roja o azul porque no hay otras! 100%
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Solución Parte c}
+\begin{itemize}
+\item Primera roja: P(R₁) = 5/8
+\end{itemize}
+\begin{itemize}
+\item Segunda roja SIN reposición: P(R₂|R₁) = 4/7
+\end{itemize}
+\begin{itemize}
+\item (quedan 4 rojas de 7 bolas totales)
+\end{itemize}
+\begin{align*}
+c) \, P(R₁ \cap R₂) = \frac{5}{8} \times \frac{4}{7} = \frac{20}{56} = \frac{5}{14}
+\end{align*}
+\begin{alertblock}{Nota}
+¡Aproximadamente 35.7% de probabilidad! 📊
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Problema de Cartas Avanzado 🎴}
+\begin{exampleblock}{Problema}
+Baraja de 52 cartas. Sacas 2 cartas sin reposición:
+\end{exampleblock}
+\begin{itemize}
+\item ¿Probabilidad de que ambas sean Ases?
+\end{itemize}
+\begin{itemize}
+\item Primera carta: P(As) = 4/52
+\end{itemize}
+\begin{itemize}
+\item Segunda carta: P(As|As) = 3/51
+\end{itemize}
+\begin{align*}
+P(As \cap As) = \frac{4}{52} \times \frac{3}{51} = \frac{12}{2652} = \frac{1}{221}
+\end{align*}
+\begin{itemize}
+\item ¡Menos de 0.5%! Muy difícil 🃏
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Problema de Aplicación Real}
+\begin{exampleblock}{Problema}
+En una clase: 60% estudia, 40% no estudia
+\end{exampleblock}
+\begin{itemize}
+\item De los que estudian: 90% aprueba
+\end{itemize}
+\begin{itemize}
+\item De los que no estudian: 30% aprueba
+\end{itemize}
+\begin{itemize}
+\item ¿Probabilidad de que un estudiante al azar apruebe?
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Vamos a usar todo lo aprendido! 💪
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Solución del Problema Real}
+\begin{itemize}
+\item P(aprueba) = P(estudia Y aprueba) O P(no estudia Y aprueba)
+\end{itemize}
+\begin{align*}
+P(E \cap A) = 0.6 \times 0.9 = 0.54
+\end{align*}
+\begin{align*}
+P(NE \cap A) = 0.4 \times 0.3 = 0.12
+\end{align*}
+\begin{align*}
+P(A) = 0.54 + 0.12 = 0.66 = 66\%
+\end{align*}
+\begin{alertblock}{Nota}
+¡66% de estudiantes aprueban! Pero estudiar aumenta mucho tus chances 📚
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Tips para Resolver Problemas}
+\begin{itemize}
+\item 1️⃣ Identifica el experimento y espacio muestral
+\end{itemize}
+\begin{itemize}
+\item 2️⃣ ¿Son eventos independientes o dependientes?
+\end{itemize}
+\begin{itemize}
+\item 3️⃣ ¿Hay reposición o no?
+\end{itemize}
+\begin{itemize}
+\item 4️⃣ ¿Es 'O' (suma) o 'Y' (multiplicación)?
+\end{itemize}
+\begin{itemize}
+\item 5️⃣ Verifica que tu respuesta esté entre 0 y 1
+\end{itemize}
+\begin{alertblock}{Nota}
+¡La práctica hace al maestro! 🌟
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Ejercicio Final de Práctica}
+\begin{exampleblock}{Problema}
+En una bolsa: 4 bolas verdes, 3 amarillas, 2 negras
+\end{exampleblock}
+\begin{itemize}
+\item a) ¿P(verde)?
+\end{itemize}
+\begin{itemize}
+\item b) ¿P(NO negra)?
+\end{itemize}
+\begin{itemize}
+\item c) ¿P(verde O amarilla)?
+\end{itemize}
+\begin{itemize}
+\item d) ¿P(2 verdes seguidas SIN reposición)?
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Intenta resolverlo antes de ver la solución!
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Solución del Ejercicio Final}
+\begin{itemize}
+\item Total: 4 + 3 + 2 = 9 bolas
+\end{itemize}
+\begin{align*}
+a) \, P(V) = \frac{4}{9}
+\end{align*}
+\begin{align*}
+b) \, P(\neg N) = 1 - \frac{2}{9} = \frac{7}{9}
+\end{align*}
+\begin{align*}
+c) \, P(V \cup Am) = \frac{4}{9} + \frac{3}{9} = \frac{7}{9}
+\end{align*}
+\begin{align*}
+d) \, P(V₁ \cap V₂) = \frac{4}{9} \times \frac{3}{8} = \frac{12}{72} = \frac{1}{6}
+\end{align*}
+\end{frame}
+
+\begin{frame}{¡Resumen de la Clase!}
+\begin{itemize}
+\item ✅ Probabilidad básica: casos favorables / totales
+\end{itemize}
+\begin{itemize}
+\item ✅ Complemento: P(no A) = 1 - P(A)
+\end{itemize}
+\begin{itemize}
+\item ✅ Regla aditiva (O): sumar probabilidades
+\end{itemize}
+\begin{itemize}
+\item ✅ Regla multiplicativa (Y): multiplicar probabilidades
+\end{itemize}
+\begin{itemize}
+\item ✅ Independencia vs dependencia
+\end{itemize}
+\begin{itemize}
+\item ✅ Con/sin reposición
+\end{itemize}
+\begin{alertblock}{Nota}
+¡Ahora puedes calcular probabilidades como un experto! 🎲🎯
+\end{alertblock}
+\end{frame}
+
+
+% Diapositiva final
+\begin{frame}
+\begin{center}
+\Huge ¿Preguntas?
+\end{center}
+\end{frame}
+
+\end{document}
