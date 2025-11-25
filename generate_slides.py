@@ -10,6 +10,8 @@ from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 import subprocess
 import sys
+import argparse
+import glob
 
 
 def cargar_yaml(archivo_yaml):
@@ -126,19 +128,67 @@ def procesar_tema(archivo_yaml, template_path, output_dir, compilar=True):
 
 def main():
     """Función principal del script."""
+    # Configurar parser de argumentos
+    parser = argparse.ArgumentParser(
+        description='Generador de Diapositivas - Probabilidad y Estadística',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Ejemplos de uso:
+  python generate_slides.py                           # Procesa archivos por defecto
+  python generate_slides.py archivo.yml               # Procesa un archivo específico
+  python generate_slides.py archivo1.yml archivo2.yml # Procesa múltiples archivos
+  python generate_slides.py *.yml                     # Procesa todos los .yml (usando glob)
+  python generate_slides.py clases/**/*.yml           # Procesa todos los .yml en subdirectorios
+  python generate_slides.py -o pdfs archivo.yml       # Especifica directorio de salida
+  python generate_slides.py -t mi_template.tex *.yml  # Usa un template personalizado
+        """
+    )
+    parser.add_argument(
+        'archivos',
+        nargs='*',
+        help='Archivos YAML a procesar. Soporta patrones con * (ej: *.yml, clases/*.yml)'
+    )
+    parser.add_argument(
+        '-o', '--output',
+        dest='output_dir',
+        default=None,
+        help='Directorio de salida para los archivos generados (default: slides/)'
+    )
+    parser.add_argument(
+        '-t', '--template',
+        dest='template',
+        default=None,
+        help='Ruta al archivo template LaTeX (default: template.tex)'
+    )
+    
+    args = parser.parse_args()
+    
     # Configuración
     directorio_base = Path(__file__).parent
-    template_path = directorio_base / "template.tex"
-    output_dir = directorio_base / "slides"
+    template_path = Path(args.template) if args.template else directorio_base / "template.tex"
+    output_dir = Path(args.output_dir) if args.output_dir else directorio_base / "slides"
     clases_dir = directorio_base / "clases" / "probabilidad y estadistica"
     
-    # Archivos YAML de temas
-    temas = [
-        clases_dir / "0-introduccion.yml",
-        clases_dir / "1-tablas_graficos.yml",
-        clases_dir / "2-medidas_posicion.yml",
-        clases_dir / "3-reglas_probabilidades.yml"
-    ]
+    # Determinar qué archivos procesar
+    if args.archivos:
+        # Expandir patrones con glob
+        temas = []
+        for patron in args.archivos:
+            # Si el patrón contiene *, expandirlo
+            if '*' in patron or '?' in patron:
+                archivos_encontrados = glob.glob(patron, recursive=True)
+                temas.extend([Path(f) for f in archivos_encontrados if f.endswith(('.yml', '.yaml'))])
+            else:
+                # Archivo directo
+                temas.append(Path(patron))
+    else:
+        # Archivos por defecto
+        temas = [
+            clases_dir / "0-introduccion.yml",
+            clases_dir / "1-tablas_graficos.yml",
+            clases_dir / "2-medidas_posicion.yml",
+            clases_dir / "3-reglas_probabilidades.yml"
+        ]
     
     print("=" * 60)
     print("Generador de Diapositivas - Probabilidad y Estadística")
@@ -149,15 +199,24 @@ def main():
         print(f"✗ Error: No se encontró el template en {template_path}")
         sys.exit(1)
     
+    # Verificar que hay archivos para procesar
+    if not temas:
+        print("✗ Error: No se encontraron archivos YAML para procesar")
+        print("Usa --help para ver ejemplos de uso")
+        sys.exit(1)
+    
     # Procesar cada tema
+    procesados = 0
     for tema in temas:
         if tema.exists():
             procesar_tema(tema, template_path, output_dir, compilar=True)
+            procesados += 1
         else:
             print(f"⚠ Advertencia: No se encontró {tema}")
     
     print("\n" + "=" * 60)
-    print(f"✓ Proceso completado. Revisa el directorio: {output_dir}")
+    print(f"✓ Proceso completado. {procesados} archivo(s) procesado(s).")
+    print(f"  Revisa el directorio: {output_dir}")
     print("=" * 60)
 
 
