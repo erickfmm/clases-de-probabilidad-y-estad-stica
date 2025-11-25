@@ -1,128 +1,274 @@
-# Generador de Diapositivas - Probabilidad y Estadística
+# 🎓 Generador Automático de Presentaciones Educativas
 
-Sistema automatizado para generar presentaciones LaTeX Beamer a partir de archivos YAML.
+![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![PowerPoint](https://img.shields.io/badge/PowerPoint-.pptx-orange.svg)
+![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-brightgreen.svg)
+![Status](https://img.shields.io/badge/status-active-success.svg)
 
-## Estructura del Proyecto
+Sistema automatizado para generar presentaciones en **PowerPoint (.pptx)** y **LaTeX Beamer (PDF)** a partir de archivos YAML estructurados. Diseñado para el Ministerio de Educación.
+
+## 📋 Características
+
+- ✅ Generación automática de presentaciones PowerPoint (.pptx)
+- ✅ Generación automática de presentaciones LaTeX Beamer (PDF)
+- ✅ Soporte para múltiples materias/cursos
+- ✅ Plantillas personalizables con temas educativos
+- ✅ Organización automática de archivos por materia
+- ✅ Tipos de contenido enriquecidos (ejemplos, fórmulas, tablas, gráficos)
+- ✅ Procesamiento por lotes de múltiples archivos
+
+## 📁 Estructura del Proyecto
 
 ```
-probest/
-├── tablas_graficos.yml          # Contenido tema 1
-├── medidas_posicion.yml         # Contenido tema 2
-├── reglas_probabilidades.yml    # Contenido tema 3
-├── template.tex                 # Template LaTeX Beamer
-├── generate_slides.py           # Script generador
-├── pyproject.toml              # Configuración del proyecto
-└── slides/                     # Directorio de salida (generado)
-    ├── tablas_graficos.tex
-    ├── tablas_graficos.pdf
-    ├── medidas_posicion.tex
-    ├── medidas_posicion.pdf
-    ├── reglas_probabilidades.tex
-    └── reglas_probabilidades.pdf
+autogenerator-of-ppt/
+├── clases/                              # Contenido de las clases en YAML
+│   ├── probabilidad y estadistica/
+│   │   ├── 0-introduccion.yml
+│   │   ├── 1-tablas_graficos.yml
+│   │   ├── 2-medidas_posicion.yml
+│   │   └── 3-reglas_probabilidades.yml
+│   └── programacion_e_informatica/
+│       ├── 0-introduccion_conceptos_basicos.yml
+│       ├── 1-fundamentos_programacion.yml
+│       └── ...
+├── temarios/                            # Temarios organizados por materia
+│   ├── probabilidad_y_estadistica.yml
+│   └── programacion_e_informatica.yml
+├── pptx/                                # Presentaciones PowerPoint generadas
+│   ├── probabilidad y estadistica/
+│   └── programacion_e_informatica/
+├── pdfs/                                # PDFs LaTeX generados
+│   ├── probabilidad y estadistica/
+│   └── programacion_e_informatica/
+├── generate_slides.py                   # Generador LaTeX/PDF
+├── generate_pptx.py                     # Generador PowerPoint
+├── template.tex                         # Template LaTeX Beamer
+├── generar_todo.bat                     # Script para generar todo
+├── run.bat                              # Script para LaTeX/PDF
+├── run_pptx.bat                         # Script para PowerPoint
+└── pyproject.toml                       # Configuración del proyecto
 ```
 
-## Instalación
+## 🚀 Instalación
 
-### Usando uv (recomendado)
+### Requisitos del Sistema
+
+- **Python >= 3.9**
+- **LaTeX** (TeX Live o MiKTeX) - _opcional, solo para generar PDFs_
+
+### Instalar Dependencias
+
+#### Opción 1: Usando uv (recomendado)
 
 ```bash
-# Instalar uv si no lo tienes
+# Instalar uv
 pip install uv
 
 # Sincronizar dependencias
 uv sync
 ```
 
-### Usando pip tradicional
+#### Opción 2: Usando pip
 
 ```bash
-pip install -r requirements.txt
+pip install pyyaml jinja2 python-pptx
 ```
 
-## Requisitos del Sistema
+## 💻 Uso
 
-- Python >= 3.9
-- LaTeX (TeX Live, MiKTeX o similar) para compilar PDFs
-  - Si no tienes LaTeX, el script generará solo archivos .tex
+### Generar TODO (PowerPoint + PDF)
 
-## Uso
+**Windows:**
+```cmd
+generar_todo.bat
+```
 
-### Generar todas las diapositivas
-
+**Manual:**
 ```bash
-# Con uv
-uv run python generate_slides.py
+python generate_slides.py    # Genera LaTeX/PDF
+python generate_pptx.py       # Genera PowerPoint
+```
 
-# O directamente si está instalado
+### Solo PowerPoint
+
+**Windows:**
+```cmd
+run_pptx.bat
+```
+
+**Manual:**
+```bash
+# Generar todas las presentaciones
+python generate_pptx.py
+
+# Generar archivo específico
+python generate_pptx.py "clases/probabilidad y estadistica/0-introduccion.yml"
+
+# Generar todos los archivos de una materia
+python generate_pptx.py "clases/probabilidad y estadistica/*.yml"
+
+# Especificar directorio de salida
+python generate_pptx.py -o mi_carpeta "clases/*.yml"
+```
+
+### Solo LaTeX/PDF
+
+**Windows:**
+```cmd
+run.bat
+```
+
+**Manual:**
+```bash
+# Generar todas las presentaciones
 python generate_slides.py
+
+# Generar archivo específico
+python generate_slides.py "clases/probabilidad y estadistica/1-tablas_graficos.yml"
+
+# Generar todos los archivos de una materia
+python generate_slides.py "clases/programacion_e_informatica/*.yml"
+
+# Especificar directorios de salida
+python generate_slides.py -o slides -p pdfs
 ```
 
-### Modificar contenido
+## 📝 Formato de Archivos YAML
 
-1. Edita los archivos YAML correspondientes a cada tema
-2. Ejecuta el script generador
-3. Las diapositivas se regenerarán automáticamente
-
-### Personalizar template
-
-Edita `template.tex` para cambiar:
-- Tema de Beamer (`\usetheme{Madrid}`)
-- Colores (`\usecolortheme{default}`)
-- Estructura de las diapositivas
-
-## Formato de los archivos YAML
-
-Cada archivo YAML sigue esta estructura:
+### Estructura Básica
 
 ```yaml
-tema: "Título del tema"
-subtitulo: "Subtítulo"
+tema: "Título Principal del Tema"
+subtitulo: "Subtítulo descriptivo (opcional)"
 
 diapositivas:
-  - titulo: "Título de la diapositiva"
+  - titulo: "Título de la Diapositiva"
     contenido:
-      - "Texto simple como viñeta"
+      - "Viñeta de texto simple"
       - tipo: "ejemplo"
         texto: "Contenido del ejemplo"
       - tipo: "formula"
-        texto: "\\frac{a}{b}"
+        texto: "$E = mc^2$"
 ```
 
-### Tipos de contenido soportados
+### Tipos de Contenido Disponibles
 
-- **string**: Viñeta simple
-- **ejemplo**: Bloque de ejemplo
-- **formula**: Fórmula matemática centrada
-- **calculo**: Ecuaciones alineadas
-- **nota**: Bloque de alerta
-- **problema**: Bloque de problema
-- **tabla**: Tabla con encabezados y filas
-- **componentes**: Lista de componentes
-- **solucion**: Bloque de solución con pasos
+| Tipo | Descripción | Ejemplo |
+|------|-------------|---------|
+| `string` | Viñeta simple | `- "Texto aquí"` |
+| `ejemplo` | Bloque de ejemplo destacado | `tipo: "ejemplo"` |
+| `formula` | Fórmula matemática centrada | `tipo: "formula"` |
+| `calculo` | Ecuaciones alineadas | `tipo: "calculo"` |
+| `nota` | Bloque de alerta/aviso | `tipo: "nota"` |
+| `problema` | Bloque de problema | `tipo: "problema"` |
+| `solucion` | Bloque de solución con pasos | `tipo: "solucion"` |
+| `tabla` | Tabla con encabezados | `tipo: "tabla"` |
+| `componentes` | Lista de componentes | `tipo: "componentes"` |
+| `grafico_barras` | Gráfico de barras | Ver GUIA_GRAFICOS.md |
+| `grafico_lineas` | Gráfico de líneas | Ver GUIA_GRAFICOS.md |
+| `grafico_circular` | Gráfico circular (pie) | Ver GUIA_GRAFICOS.md |
+| `grafico_dispersion` | Gráfico de dispersión | Ver GUIA_GRAFICOS.md |
 
-## Compilación Manual
+### Ejemplo Completo
 
-Si prefieres compilar manualmente:
+```yaml
+tema: "Introducción a la Probabilidad"
+subtitulo: "Conceptos Fundamentales"
 
-```bash
-cd slides
-pdflatex tablas_graficos.tex
-pdflatex tablas_graficos.tex  # Segunda pasada para referencias
+diapositivas:
+  - titulo: "¿Qué es la Probabilidad?"
+    contenido:
+      - "Medida de incertidumbre de eventos"
+      - "Valores entre 0 y 1"
+      - tipo: "formula"
+        texto: "$P(A) = \\frac{\\text{casos favorables}}{\\text{casos totales}}$"
+      
+  - titulo: "Ejemplo Práctico"
+    contenido:
+      - tipo: "problema"
+        texto: "¿Cuál es la probabilidad de sacar un as de un mazo de 52 cartas?"
+      - tipo: "solucion"
+        pasos:
+          - "Casos favorables: 4 ases"
+          - "Casos totales: 52 cartas"
+          - "$P(\\text{as}) = \\frac{4}{52} = \\frac{1}{13}$"
 ```
 
-## Desarrollo
+## 📊 Gráficos
+
+Para información detallada sobre cómo crear gráficos, consulta:
+- **[GUIA_GRAFICOS.md](GUIA_GRAFICOS.md)** - Guía completa de gráficos
+- **[GUIA_RAPIDA_PPTX.md](GUIA_RAPIDA_PPTX.md)** - Guía rápida de PowerPoint
+
+## 🎨 Personalización
+
+### Template LaTeX
+
+Edita `template.tex` para cambiar:
+- Tema de Beamer: `\usetheme{Madrid}`
+- Esquema de colores: `\usecolortheme{default}`
+- Fuentes y estilos
+
+### Colores PowerPoint
+
+Edita `generate_pptx.py` en la sección `COLORES`:
+
+```python
+COLORES = {
+    'primario': RGBColor(41, 128, 185),
+    'secundario': RGBColor(231, 76, 60),
+    'acento': RGBColor(46, 204, 113),
+    # ...
+}
+```
+
+## 📚 Materias Disponibles
+
+### Probabilidad y Estadística
+- Introducción
+- Tablas y Gráficos
+- Medidas de Posición
+- Reglas de Probabilidades
+
+### Programación e Informática
+- Introducción y Conceptos Básicos
+- Fundamentos de Programación
+- Estructuras de Datos y Modularidad
+- Arquitectura de Software
+- Integración con el Mundo Real
+
+## 🛠️ Desarrollo
 
 ```bash
-# Instalar dependencias de desarrollo
+# Instalar con dependencias de desarrollo
 uv sync --all-extras
 
 # Formatear código
-black generate_slides.py
+black generate_slides.py generate_pptx.py
 
 # Linting
-ruff check generate_slides.py
+ruff check generate_slides.py generate_pptx.py
 ```
 
-## Licencia
+## 📖 Documentación Adicional
 
-Proyecto educativo para el Ministerio de Educación.
+- **[crear_clases_desde_temario.instructions.md](.github/instructions/crear_clases_desde_temario.instructions.md)** - Guía completa del esquema YAML
+- **[README_PPTX.md](README_PPTX.md)** - Documentación específica de PowerPoint
+
+## 🤝 Contribuir
+
+Para agregar nuevas materias o clases:
+
+1. Crea un directorio en `clases/[nombre-materia]/`
+2. Agrega archivos `.yml` siguiendo el esquema documentado
+3. Ejecuta `generar_todo.bat` o los scripts individuales
+4. Las presentaciones se generarán automáticamente
+
+## 📄 Licencia
+
+Proyecto educativo con licencia MIT, abierto para todo uso.
+
+---
+
+**Desarrollado con ❤️ para la educación**
