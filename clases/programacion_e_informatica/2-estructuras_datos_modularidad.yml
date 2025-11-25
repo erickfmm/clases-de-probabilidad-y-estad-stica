@@ -22,12 +22,12 @@ diapositivas:
       - "En vez de crear 10 variables separadas, usamos 1 lista"
       - tipo: "ejemplo"
         texto: |
-          # Forma incorrecta ❌
+          # Forma incorrecta
           transaccion1 = 15000
           transaccion2 = 23000
           transaccion3 = 8500
           
-          # Forma correcta ✅
+          # Forma correcta
           transacciones = [15000, 23000, 8500, 12000, 31000]
       - "Las listas se indexan desde 0"
 
@@ -68,7 +68,7 @@ diapositivas:
         texto: "Almacenar y procesar lista de empleados"
       - tipo: "ejemplo"
         texto: |
-          empleados = ["Ana", "Juan", "María", "Pedro"]
+          empleados = ["Ana", "Juan", "Maria", "Pedro"]
           
           # Agregar nuevo empleado
           empleados.append("Carlos")
@@ -235,14 +235,14 @@ diapositivas:
       - tipo: "ejemplo"
         texto: |
           def validar_rut(rut):
-              # Eliminar puntos y guión
+              # Eliminar puntos y guion
               rut_limpio = rut.replace(".", "").replace("-", "")
               
               # Verificar longitud
               if len(rut_limpio) < 8 or len(rut_limpio) > 9:
                   return False
               
-              # Validar que sean números (excepto último dígito)
+              # Validar que sean numeros (excepto ultimo digito)
               if not rut_limpio[:-1].isdigit():
                   return False
               

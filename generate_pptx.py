@@ -450,19 +450,33 @@ def procesar_tema(archivo_yaml, output_dir):
     
     Args:
         archivo_yaml (str): Ruta al archivo YAML del tema
-        output_dir (str): Directorio de salida
+        output_dir (str): Directorio base de salida
     """
-    print(f"\n→ Procesando: {Path(archivo_yaml).name}")
+    archivo_yaml = Path(archivo_yaml).resolve()
+    print(f"\n→ Procesando: {archivo_yaml}")
     
     # Cargar datos
     datos = cargar_yaml(archivo_yaml)
     
-    # Generar nombre de salida
-    nombre_base = Path(archivo_yaml).stem
-    output_pptx = Path(output_dir) / f"{nombre_base}.pptx"
+    # Determinar directorio de salida manteniendo estructura
+    try:
+        directorio_base = Path(__file__).parent.resolve()
+        clases_base = directorio_base / "clases"
+        
+        if archivo_yaml.is_relative_to(clases_base):
+            relative_path = archivo_yaml.parent.relative_to(clases_base)
+            pptx_output_dir = Path(output_dir) / relative_path
+        else:
+            pptx_output_dir = Path(output_dir)
+    except (ValueError, AttributeError):
+        pptx_output_dir = Path(output_dir)
     
     # Crear directorio de salida si no existe
-    Path(output_dir).mkdir(exist_ok=True)
+    pptx_output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Generar nombre de salida
+    nombre_base = archivo_yaml.stem
+    output_pptx = pptx_output_dir / f"{nombre_base}.pptx"
     
     # Generar PowerPoint
     generar_pptx(datos, output_pptx)
@@ -475,12 +489,16 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Ejemplos de uso:
-  python generate_pptx.py                             # Procesa archivos por defecto
-  python generate_pptx.py archivo.yml                 # Procesa un archivo específico
-  python generate_pptx.py archivo1.yml archivo2.yml   # Procesa múltiples archivos
-  python generate_pptx.py *.yml                       # Procesa todos los .yml (usando glob)
-  python generate_pptx.py clases/**/*.yml             # Procesa todos los .yml en subdirectorios
-  python generate_pptx.py -o pptx_output archivo.yml  # Especifica directorio de salida
+  python generate_pptx.py                                    # Procesa TODOS los .yml en clases/**/
+  python generate_pptx.py archivo.yml                        # Procesa un archivo específico
+  python generate_pptx.py archivo1.yml archivo2.yml          # Procesa múltiples archivos
+  python generate_pptx.py "clases/**/*.yml"                  # Procesa todos en clases (explícito)
+  python generate_pptx.py "clases/probabilidad y estadistica/*.yml"  # Solo probabilidad
+  python generate_pptx.py "clases/programacion_e_informatica/*.yml"  # Solo programación
+  python generate_pptx.py -o pptx_output archivo.yml         # Especifica directorio de salida
+
+Estructura de salida:
+  - Archivos .pptx van a: pptx/[materia]/ (mantiene estructura de clases/)
         """
     )
     parser.add_argument(
@@ -500,7 +518,7 @@ Ejemplos de uso:
     # Configuración
     directorio_base = Path(__file__).parent
     output_dir = Path(args.output_dir) if args.output_dir else directorio_base / "pptx"
-    clases_dir = directorio_base / "clases" / "probabilidad y estadistica"
+    clases_dir = directorio_base / "clases"
     
     # Determinar qué archivos procesar
     if args.archivos:
@@ -515,13 +533,17 @@ Ejemplos de uso:
                 # Archivo directo
                 temas.append(Path(patron))
     else:
-        # Archivos por defecto
-        temas = [
-            clases_dir / "0-introduccion.yml",
-            clases_dir / "1-tablas_graficos.yml",
-            clases_dir / "2-medidas_posicion.yml",
-            clases_dir / "3-reglas_probabilidades.yml"
-        ]
+        # Buscar todos los archivos .yml en clases/**/*
+        temas = list(clases_dir.glob('**/*.yml'))
+        if not temas:
+            # Fallback a archivos por defecto de probabilidad y estadística
+            prob_dir = clases_dir / "probabilidad y estadistica"
+            temas = [
+                prob_dir / "0-introduccion.yml",
+                prob_dir / "1-tablas_graficos.yml",
+                prob_dir / "2-medidas_posicion.yml",
+                prob_dir / "3-reglas_probabilidades.yml"
+            ]
     
     print("=" * 60)
     print("Generador de Presentaciones PowerPoint")

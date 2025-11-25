@@ -131,11 +131,11 @@ diapositivas:
           precio_producto = 30000
           
           if saldo >= precio_producto:
-              print("✅ Compra aprobada")
+              print("Compra aprobada")
               saldo = saldo - precio_producto
               print("Nuevo saldo:", saldo)
           else:
-              print("❌ Saldo insuficiente")
+              print("Saldo insuficiente")
       - tipo: "calculo"
         texto: "Resultado: Compra aprobada. Nuevo saldo: 20000"
 
@@ -169,7 +169,7 @@ diapositivas:
               case 1: crear_factura()
               case 2: consultar_saldo()
               case 3: generar_reporte()
-              case _: print("Opción inválida")
+              case _: print("Opcion invalida")
       - tipo: "nota"
         texto: "Más limpio que múltiples IF/ELIF cuando hay muchas opciones"
 
@@ -189,9 +189,9 @@ diapositivas:
               intentos = intentos + 1
           
           if conectado:
-              print("✅ Conexión exitosa")
+              print("Conexion exitosa")
           else:
-              print("❌ Error de conexión")
+              print("Error de conexion")
 
   # === CICLO FOR ===
   - titulo: "Ciclos: FOR (Para Cada)"
@@ -202,12 +202,12 @@ diapositivas:
         texto: "Pagar nómina a todos los empleados:"
       - tipo: "calculo"
         texto: |
-          empleados = ["Ana", "Juan", "María", "Pedro"]
+          empleados = ["Ana", "Juan", "Maria", "Pedro"]
           
           for empleado in empleados:
               procesar_pago(empleado)
               enviar_comprobante(empleado)
-              print("Pago a", empleado, "✅")
+              print("Pago a", empleado, "OK")
 
   # === EJEMPLO FOR PRÁCTICO ===
   - titulo: "Ejemplo Práctico: Calcular Total de Ventas"
@@ -238,7 +238,7 @@ diapositivas:
           contador = 0
           while contador < 10:
               print("Hola")
-              # ¡Olvidamos incrementar contador!
+              # Olvidamos incrementar contador!
               # Este bucle NUNCA termina
       - tipo: "ejemplo"
         texto: "Bucle correcto:"
@@ -247,7 +247,7 @@ diapositivas:
           contador = 0
           while contador < 10:
               print("Hola")
-              contador = contador + 1  # ✅ Se incrementa
+              contador = contador + 1  # Se incrementa
 
   # === EJERCICIO PRÁCTICO ===
   - titulo: "¡Tu Turno de Practicar! 💪"

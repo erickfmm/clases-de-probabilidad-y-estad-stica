@@ -9,6 +9,8 @@
 \usepackage[spanish]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fontawesome5}
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows, positioning, calc}
 \usepackage{pgfplots}
@@ -18,42 +20,115 @@
 \usepackage{xcolor}
 \usepackage{colortbl}
 \usepackage{newunicodechar}
+\usepackage{listings}
+\usepackage{fancyvrb}
 
-% Configurar emojis como texto simple
-\newunicodechar{🎲}{\textsf{[dado]}}
-\newunicodechar{🎯}{\textsf{[objetivo]}}
-\newunicodechar{📋}{\textsf{[lista]}}
-\newunicodechar{⭐}{\textsf{[estrella]}}
-\newunicodechar{🔮}{\textsf{[bola]}}
-\newunicodechar{📏}{\textsf{[regla]}}
-\newunicodechar{🃏}{\textsf{[carta]}}
-\newunicodechar{🔄}{\textsf{[ciclo]}}
-\newunicodechar{🔢}{\textsf{[numeros]}}
-\newunicodechar{➕}{\textsf{[+]}}
-\newunicodechar{✖}{\textsf{[x]}}
-\newunicodechar{🔗}{\textsf{[cadena]}}
-\newunicodechar{🪙}{\textsf{[moneda]}}
-\newunicodechar{🔑}{\textsf{[llave]}}
-\newunicodechar{🔍}{\textsf{[lupa]}}
-\newunicodechar{📊}{\textsf{[grafico]}}
-\newunicodechar{🎴}{\textsf{[cartas]}}
-\newunicodechar{💪}{\textsf{[fuerza]}}
-\newunicodechar{🌟}{\textsf{[estrella]}}
-\newunicodechar{💡}{\textsf{[idea]}}
-\newunicodechar{✨}{\textsf{[brillos]}}
-\newunicodechar{✅}{\textsf{[check]}}
-\newunicodechar{🎓}{\textsf{[gorro]}}
-\newunicodechar{🤔}{\textsf{[pensar]}}
-\newunicodechar{🚀}{\textsf{[cohete]}}
-\newunicodechar{♥}{\ensuremath{\heartsuit}}
+% Configuración de listings para código
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    breakatwhitespace=true,
+    columns=flexible,
+    keepspaces=true,
+    showstringspaces=false,
+    frame=single,
+    backgroundcolor=\color{colorFondo},
+    rulecolor=\color{colorPrimario!50},
+    numbers=none,
+    xleftmargin=10pt,
+    xrightmargin=10pt,
+    framexleftmargin=5pt,
+    framexrightmargin=5pt,
+    aboveskip=10pt,
+    belowskip=10pt
+}
+
+% Configurar emojis como texto simple con íconos Font Awesome
+\newunicodechar{🎲}{\faIcon{dice}}
+\newunicodechar{🎯}{\faIcon{bullseye}}
+\newunicodechar{📋}{\faIcon{clipboard}}
+\newunicodechar{⭐}{\faIcon{star}}
+\newunicodechar{🔮}{\faIcon{crystal-ball}}
+\newunicodechar{📏}{\faIcon{ruler}}
+\newunicodechar{🃏}{\faIcon{playing-card}}
+\newunicodechar{🔄}{\faIcon{sync}}
+\newunicodechar{🔢}{\faIcon{sort-numeric-up}}
+\newunicodechar{➕}{\faIcon{plus}}
+\newunicodechar{✖}{\faIcon{times}}
+\newunicodechar{🔗}{\faIcon{link}}
+\newunicodechar{🪙}{\faIcon{coins}}
+\newunicodechar{🔑}{\faIcon{key}}
+\newunicodechar{🔍}{\faIcon{search}}
+\newunicodechar{📊}{\faIcon{chart-bar}}
+\newunicodechar{🎴}{\faIcon{grip-horizontal}}
+\newunicodechar{💪}{\faIcon{dumbbell}}
+\newunicodechar{🌟}{\faIcon{star}}
+\newunicodechar{💡}{\faIcon{lightbulb}}
+\newunicodechar{✨}{\faIcon{magic}}
+\newunicodechar{✅}{\faIcon{check-circle}}
+\newunicodechar{🎓}{\faIcon{graduation-cap}}
+\newunicodechar{🤔}{\faIcon{question-circle}}
+\newunicodechar{🚀}{\faIcon{rocket}}
+\newunicodechar{♥}{\faIcon{heart}}
 \newunicodechar{₁}{\textsubscript{1}}
 \newunicodechar{₂}{\textsubscript{2}}
-\newunicodechar{✖}{\textsf{x}}
-\newunicodechar{✓}{\textsf{[ok]}}
-\newunicodechar{⚫}{\textsf{[punto]}}
-\newunicodechar{👥}{\textsf{[grupo]}}
+\newunicodechar{✓}{\faIcon{check}}
+\newunicodechar{⚫}{\faIcon{circle}}
+\newunicodechar{👥}{\faIcon{users}}
+\newunicodechar{🤖}{\faIcon{robot}}
+\newunicodechar{📜}{\faIcon{scroll}}
+\newunicodechar{💻}{\faIcon{laptop}}
+\newunicodechar{🖥}{\faIcon{desktop}}
+\newunicodechar{🌐}{\faIcon{globe}}
+\newunicodechar{☁}{\faIcon{cloud}}
+\newunicodechar{📱}{\faIcon{mobile-alt}}
+\newunicodechar{🔧}{\faIcon{wrench}}
+\newunicodechar{💾}{\faIcon{save}}
+\newunicodechar{🔌}{\faIcon{plug}}
+\newunicodechar{🧠}{\faIcon{brain}}
+\newunicodechar{🐍}{\textbf{Python}}
+\newunicodechar{📝}{\faIcon{file-alt}}
+\newunicodechar{☕}{\textbf{Java}}
+\newunicodechar{⚡}{\faIcon{bolt}}
+\newunicodechar{▶}{\faIcon{play}}
+\newunicodechar{⏭}{\faIcon{forward}}
+\newunicodechar{🔹}{\faIcon{circle}}
+\newunicodechar{🧮}{\faIcon{calculator}}
+\newunicodechar{🏗}{\faIcon{tools}}
+\newunicodechar{🏛}{\faIcon{landmark}}
+\newunicodechar{🌍}{\faIcon{globe-americas}}
+\newunicodechar{🔒}{\faIcon{lock}}
+\newunicodechar{💰}{\faIcon{dollar-sign}}
+\newunicodechar{🏘}{\faIcon{city}}
+\newunicodechar{🏢}{\faIcon{building}}
+\newunicodechar{🛡}{\faIcon{shield-alt}}
+\newunicodechar{🅰}{\textbf{A}}
+\newunicodechar{🅲}{\textbf{C}}
+\newunicodechar{🅸}{\textbf{I}}
+\newunicodechar{🅳}{\textbf{D}}
+\newunicodechar{🔐}{\faIcon{lock}}
+\newunicodechar{🎟}{\faIcon{ticket-alt}}
+\newunicodechar{⏱}{\faIcon{stopwatch}}
+\newunicodechar{⚠}{\faIcon{exclamation-triangle}}
+\newunicodechar{🛤}{\faIcon{road}}
+\newunicodechar{📚}{\faIcon{book}}
+\newunicodechar{🧪}{\faIcon{flask}}
+\newunicodechar{🐛}{\faIcon{bug}}
+\newunicodechar{🚨}{\faIcon{siren}}
+\newunicodechar{💼}{\faIcon{briefcase}}
+\newunicodechar{🎉}{\faIcon{glass-cheers}}
+\newunicodechar{🏠}{\faIcon{home}}
+\newunicodechar{❌}{\faIcon{times-circle}}
+\newunicodechar{⚙}{\faIcon{cog}}
+\newunicodechar{↔}{\faIcon{arrows-alt-h}}
+\newunicodechar{↑}{\faIcon{arrow-up}}
+\newunicodechar{📦}{\faIcon{box}}
+\newunicodechar{🥧}{\faIcon{chart-pie}}
+\newunicodechar{📈}{\faIcon{chart-line}}
+\newunicodechar{📉}{\faIcon{chart-line}}
+\newunicodechar{🧹}{\faIcon{broom}}
 \newunicodechar{️}{}
-
+\newunicodechar{°}{\textdegree}
 % Colores personalizados vibrantes y lúdicos
 \definecolor{colorPrimario}{RGB}{41, 128, 185}      % Azul vibrante
 \definecolor{colorSecundario}{RGB}{231, 76, 60}     % Rojo coral
@@ -93,7 +168,7 @@
 \title{<< tema >>}
 \subtitle{<< subtitulo >>}
 \author{Probabilidad y Estadística}
-\institute{Aprendiendo con diversión 🎓}
+\institute{Aprendiendo con diversión \faIcon{graduation-cap}}
 \date{\today}
 
 \begin{document}
@@ -114,13 +189,17 @@
 \begin{frame}[fragile]{<< slide.titulo >>}
 <<% for item in slide.contenido %>>
 <<% if item is string %>>
-\begin{itemize}
   \item << item >>
-\end{itemize}
 
 <<% elif item.tipo == "ejemplo" %>>
-\begin{exampleblock}{✨ Ejemplo}
+\begin{exampleblock}{\faIcon{magic} Ejemplo}
+<<% if '\n' in item.texto or 'def ' in item.texto or 'class ' in item.texto or 'import ' in item.texto or 'INICIO' in item.texto %>>
+\begin{lstlisting}
 << item.texto >>
+\end{lstlisting}
+<<% else %>>
+<< item.texto >>
+<<% endif %>>
 \end{exampleblock}
 
 <<% elif item.tipo == "formula" %>>
@@ -136,6 +215,11 @@
 \end{center}
 
 <<% elif item.tipo == "calculo" %>>
+<<% if '\n' in item.texto and not '=' in item.texto.split('\n')[0][:20] %>>
+\begin{lstlisting}
+<< item.texto >>
+\end{lstlisting}
+<<% else %>>
 \begin{center}
 \colorbox{colorFondo}{%
   \parbox{0.9\textwidth}{%
@@ -145,14 +229,16 @@
   }%
 }
 \end{center}
+<<% endif %>>
+
 
 <<% elif item.tipo == "nota" %>>
-\begin{alertblock}{💡 Nota importante}
+\begin{alertblock}{\faIcon{lightbulb} Nota importante}
 << item.texto >>
 \end{alertblock}
 
 <<% elif item.tipo == "problema" %>>
-\begin{exampleblock}{🎯 Problema}
+\begin{exampleblock}{\faIcon{bullseye} Problema}
 << item.texto >>
 \end{exampleblock}
 
@@ -181,7 +267,7 @@
 \end{itemize}
 
 <<% elif item.tipo == "solucion" %>>
-\begin{block}{✅ Solución}
+\begin{block}{\faIcon{check-circle} Solución}
 \begin{enumerate}
 <<% for paso in item.pasos %>>
   \item << paso >>
@@ -272,8 +358,8 @@
 \begin{frame}[plain]
 \begin{tikzpicture}[remember picture,overlay]
   \fill[colorAccento!20] (current page.south west) rectangle (current page.north east);
-  \node[font=\Huge\bfseries,text=colorPrimario] at (current page.center) {¿Preguntas? 🤔};
-  \node[font=\large,text=colorSecundario,below=1.5cm] at (current page.center) {¡Sigue aprendiendo! 🚀};
+  \node[font=\Huge\bfseries,text=colorPrimario] at (current page.center) {¿Preguntas? \faIcon{question-circle}};
+  \node[font=\large,text=colorSecundario,below=1.5cm] at (current page.center) {¡Sigue aprendiendo! \faIcon{rocket}};
 \end{tikzpicture}
 \end{frame}
 

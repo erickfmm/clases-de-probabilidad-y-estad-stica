@@ -126,7 +126,7 @@ diapositivas:
                   self.total = self.total * 1.19
               
               def generar_pdf(self):
-                  # Lógica para crear PDF
+                  # Logica para crear PDF
                   pass
 
   # === ARQUITECTURA CLIENTE-SERVIDOR ===
@@ -215,15 +215,15 @@ diapositivas:
           
           # VISTA (interfaz)
           def mostrar_formulario_login():
-              # Muestra campos de usuario y contraseña
+              # Muestra campos de usuario y contrasena
               pass
           
-          # CONTROLADOR (lógica)
+          # CONTROLADOR (logica)
           def procesar_login(usuario, password):
               if UsuarioModelo.verificar_credenciales(usuario, password):
                   mostrar_pantalla_principal()
               else:
-                  mostrar_error("Credenciales inválidas")
+                  mostrar_error("Credenciales invalidas")
 
   # === BASES DE DATOS INTRO ===
   - titulo: "Bases de Datos: Persistencia de Datos"
@@ -290,15 +290,15 @@ diapositivas:
         texto: "Transferir $50.000 de cuenta A a cuenta B"
       - tipo: "calculo"
         texto: |
-          INICIO TRANSACCIÓN
+          INICIO TRANSACCION
             1. Verificar saldo cuenta A >= 50000
             2. Restar 50000 de cuenta A
             3. Sumar 50000 a cuenta B
             4. Registrar movimiento
           
-          SI todo OK → COMMIT (confirmar)
-          SI algo falla → ROLLBACK (revertir todo)
-          FIN TRANSACCIÓN
+          SI todo OK, COMMIT (confirmar)
+          SI algo falla, ROLLBACK (revertir todo)
+          FIN TRANSACCION
       - tipo: "nota"
         texto: "¡El dinero nunca se pierde a la mitad! 💰"
 

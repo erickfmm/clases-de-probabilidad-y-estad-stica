@@ -140,9 +140,9 @@ diapositivas:
           INICIO
             Leer edad
             SI edad >= 18 ENTONCES
-              Mostrar "Puede votar ✅"
+              Mostrar "Puede votar"
             SINO
-              Mostrar "No puede votar ❌"
+              Mostrar "No puede votar"
             FIN SI
           FIN
       - tipo: "nota"
@@ -160,8 +160,8 @@ diapositivas:
           2. Verificar formato (XX.XXX.XXX-X)
           3. Calcular dígito verificador
           4. Comparar con el dígito ingresado
-          5. Si coincide → RUT válido ✅
-          6. Si no coincide → RUT inválido ❌
+          5. Si coincide, RUT válido
+          6. Si no coincide, RUT inválido
 
   # === EJERCICIO ===
   - titulo: "¡Tu Turno de Practicar! 💪"

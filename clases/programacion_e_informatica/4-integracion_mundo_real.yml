@@ -184,7 +184,7 @@ diapositivas:
           
           if response.status_code == 200:
               datos = response.json()
-              print("Razón Social:", datos["razon_social"])
+              print("Razon Social:", datos["razon_social"])
           else:
               print("Error:", response.status_code)
 
@@ -314,10 +314,10 @@ diapositivas:
       - tipo: "calculo"
         texto: |
           1. Desarrollador hace push a Git
-          2. CI ejecuta tests automáticamente
-          3. Si tests pasan → Build del proyecto
+          2. CI ejecuta tests automaticamente
+          3. Si tests pasan, Build del proyecto
           4. CD despliega a servidor
-          5. Aplicación actualizada en minutos ⚡
+          5. Aplicacion actualizada en minutos
       - tipo: "nota"
         texto: "De código a producción sin intervención manual 🤖"
 
