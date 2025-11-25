@@ -6,7 +6,18 @@
 ![LaTeX](https://img.shields.io/badge/LaTeX-Beamer-brightgreen.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 
-Sistema automatizado para generar presentaciones en **PowerPoint (.pptx)** y **LaTeX Beamer (PDF)** a partir de archivos YAML estructurados. Diseñado para el Ministerio de Educación.
+Sistema automatizado para generar presentaciones en **PowerPoint (.pptx)** y **LaTeX Beamer (PDF)** a partir de archivos YAML estructurados. Diseñado para mi esposa <3 .
+
+
+## Pasos a seguir para crear nuevas clases
+
+* Clona este repositorio, o descarga el zip y ábrelo en VSCode
+* Instala Python en tu pc, e instala uv con ```pip install uv``` y luego ejecuta ```uv sync```
+* Instala en VSCode la extensión de Github Copilot. Con la versión gratuita basta, pero si tienes la pro, pues mejor
+* Crea un YAML de temario en temarios/
+* En el clip, añade la instrucción que trae, y en el prompt dile que haga clases de acuerdo a tu temario
+* Asegúrate que las clases queden en la carpeta clases/
+* Ejecuta ```uv run generar_todo.bat``` (o bien ```.venv\Scripts\activate.bat``` y luego ```generar_todo.bat```) y listo! tendrás tus clases en pptx y pdf (Para generar los PDF recomiendo instalar MikTex)
 
 ## 📋 Características
 
